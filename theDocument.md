@@ -7,8 +7,6 @@ A **changelog** is a file that keeps a log of all notable changes made to a proj
 
 The purpose of a changelog is to provide developers, users, and collaborators with a clear history of updates, making it easier to understand the evolution of the project.
 
----
-
 ## Basic Changelog Structure
 
 A changelog is usually structured by version numbers, dates, and categories of changes. Here's a basic structure:
