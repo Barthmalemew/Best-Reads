@@ -1,5 +1,3 @@
-
-
 # How to Use a Changelog
 
 ## Overview
@@ -7,11 +5,13 @@ A **changelog** is a file that keeps a log of all notable changes made to a proj
 
 The purpose of a changelog is to provide developers, users, and collaborators with a clear history of updates, making it easier to understand the evolution of the project.
 
+---
+
 ## Basic Changelog Structure
 
 A changelog is usually structured by version numbers, dates, and categories of changes. Here's a basic structure:
 
-```markdown
+\```markdown
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -31,8 +31,9 @@ All notable changes to this project will be documented in this file.
 ## [1.0.0] - 2024-09-01
 ### Added
 - Initial release of the project.
+\```
 
----------------------------------------------------------------------
+---
 
 # How to Use Spring Framework
 
@@ -84,7 +85,7 @@ Spring provides robust transaction management across various persistence technol
 - [Spring Guides](https://spring.io/guides)
 - [Spring Framework on GitHub](https://github.com/spring-projects/spring-framework)
 
----------------------------------------------------------------------
+---
 
 # How to Use SQL
 
@@ -100,10 +101,11 @@ The `SELECT` statement is used to fetch data from a database. Learn more here:
 
 - [SQL SELECT Statement](https://www.w3schools.com/sql/sql_select.asp)
 
-```sql
+\```sql
 SELECT column1, column2 FROM table_name WHERE condition;
+\```
 
----------------------------------------------------------------------
+---
 
 # How to Use JavaScript, HTML, and CSS
 
