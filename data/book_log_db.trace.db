@@ -1,0 +1,48 @@
+2024-09-20 03:41:18.430124-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+select b1_0.id,b1_0.title from book b1_0 [42104-224]
+2024-09-20 03:41:21.187328-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:22.638026-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:23.374855-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:27.259836-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:27.462716-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:27.673156-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:27.884879-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:28.108529-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:28.327042-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:28.558350-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:28.818849-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:29.105198-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:29.570500-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:29.831342-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]
+2024-09-20 03:41:46.980549-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
+insert into book (title,id) values (?,default) [42104-224]

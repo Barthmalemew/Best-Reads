@@ -17,7 +17,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
-## [0.0.1] - YYYY-MM-DD
+## [0.0.12] - 2024-09-20
+
+### Added
+
+- Created basic skeleton with basic RESTController for post and get
+- H2 database created
+- Barebones HTML with JS Connection
+
+### Notes
+Nothing presented should stay the same, it is simply
+a basic Spring project to get familiar with the technologies
+we will be using and the demonstrate basic web app structure
+
+## [0.0.1] - 2024-09-10
 
 ### Added
 

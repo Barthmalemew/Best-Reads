@@ -1,0 +1,5 @@
+/home/barthmalemew/Projects/book-reading-log/src/main/java/com/example/backend/BackendApplication.java
+/home/barthmalemew/Projects/book-reading-log/src/main/java/com/example/backend/controller/BookController.java
+/home/barthmalemew/Projects/book-reading-log/src/main/java/com/example/backend/model/Book.java
+/home/barthmalemew/Projects/book-reading-log/src/main/java/com/example/backend/repository/BookRepository.java
+/home/barthmalemew/Projects/book-reading-log/src/main/java/com/example/backend/service/BookService.java

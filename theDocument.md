@@ -142,3 +142,9 @@ SELECT column1, column2 FROM table_name WHERE condition;
 - [Web Development Basics - MDN](https://developer.mozilla.org/en-US/docs/Learn)
 - [HTML5, CSS3, and JavaScript Guide - freeCodeCamp](https://www.freecodecamp.org/)
 
+## Server
+- Address: http://localhost:8080/h2-console
+- URL: jdbc:h2:file:./data/book_log_db
+
+## URL
+- http://localhost:8080/index.html

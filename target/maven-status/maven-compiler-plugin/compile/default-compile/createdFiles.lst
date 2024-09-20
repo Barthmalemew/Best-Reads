@@ -1,0 +1,5 @@
+com/example/backend/repository/BookRepository.class
+com/example/backend/BackendApplication.class
+com/example/backend/service/BookService.class
+com/example/backend/model/Book.class
+com/example/backend/controller/BookController.class
