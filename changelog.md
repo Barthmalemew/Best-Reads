@@ -16,6 +16,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [ ] Prepare deployment scripts and documentation
 
 ---
+## [0.0.13] - 2024-09-21
+
+### Added
+
+- Added basic frontend structure to reflect the figma
+- added Junk database data to reflect the figma
 
 ## [0.0.12] - 2024-09-20
 
