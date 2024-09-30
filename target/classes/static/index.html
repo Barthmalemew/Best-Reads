@@ -4,58 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Log</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
 </head>
 <body>
-<h1>Book Log</h1>
 
-<!-- Form to input a new book title -->
-<form id="bookForm">
-    <input type="text" id="title" placeholder="Enter book title" required> <!-- Input field for book title -->
-    <button type="submit">Add Book</button> <!-- Button to submit the form -->
-</form>
+<!-- Sidebar -->
+<div class="sidebar">
+    <h1>Book Log</h1>
+    <p>Add Book</p>
+    <p>Log Pages</p>
+    <p>Add Collection</p>
+    <p>Collection 1</p>
+</div>
 
-<h2>Books:</h2>
-<ul id="bookList"></ul> <!-- Unordered list to display the list of books -->
+<!-- Main content -->
+<div class="content">
+    <div class="progress-bar">
+        <div class="circle">Pages 100</div>
+        <div class="circle">Pages 100</div>
+        <div class="circle">Pages 100</div>
+        <div class="circle">Pages 100</div>
+    </div>
 
-<script>
-    // Function to fetch all books from the backend and display them in the bookList
-    async function fetchBooks() {
-        const response = await fetch('/api/books'); // Sends GET request to the backend API
-        const books = await response.json(); // Parses the JSON response
-        if (Array.isArray(books)) { // Checks if the response is an array of books
-            const bookList = document.getElementById('bookList');
-            bookList.innerHTML = ''; // Clears the current book list
-            books.forEach(book => {
-                const li = document.createElement('li'); // Creates a new list item for each book
-                li.textContent = book.title; // Sets the text content to the book's title
-                bookList.appendChild(li); // Appends the list item to the book list
-            });
-        } else {
-            console.error("Error fetching books: Response is not an array"); // Logs an error if the response is not valid
-        }
-    }
-
-    // Event listener for the book form submission
-    document.getElementById('bookForm').addEventListener('submit', async (event) => {
-        event.preventDefault(); // Prevents the default form submission behavior
-        const title = document.getElementById('title').value; // Retrieves the book title entered by the user
-        const response = await fetch('/api/books', {
-            method: 'POST', // Sends a POST request to the backend API to add a new book
-            headers: {
-                'Content-Type': 'application/json' // Specifies the request body content type
-            },
-            body: JSON.stringify({ title }) // Sends the book title as JSON in the request body
-        });
-        if (response.ok) { // Checks if the POST request was successful
-            document.getElementById('title').value = ''; // Clears the input field after adding the book
-            fetchBooks(); // Fetches and updates the book list
-        } else {
-            console.error('Error adding book: ', response.statusText); // Logs an error if the POST request fails
-        }
-    });
-
-    // Initial fetch of books when the page loads
-    fetchBooks();
-</script>
+    <div class="book-list" id="bookList">
+        <!-- Books will be dynamically injected here -->
+    </div>
+</div>
 </body>
 </html>

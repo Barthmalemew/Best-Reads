@@ -46,3 +46,279 @@ insert into book (title,id) values (?,default) [42104-224]
 2024-09-20 03:41:46.980549-04:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found (this database is empty); SQL statement:
 insert into book (title,id) values (?,default) [42104-224]
+2024-09-29 22:58:03.193606-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKS" not found; SQL statement:
+INSERT INTO books (title, author, genre, rating) VALUES
+('The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 5.0),
+('1984', 'George Orwell', 'Dystopian', 4.8),
+('To Kill a Mockingbird', 'Harper Lee', 'Classic', 4.9),
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', 4.7),
+('The Catcher in the Rye', 'J.D. Salinger', 'Classic', 4.6) [42102-224]
+2024-09-29 22:58:18.346216-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "AUTHOR" not found; SQL statement:
+INSERT INTO BOOK(title, author, genre, rating) VALUES
+('The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 5.0),
+('1984', 'George Orwell', 'Dystopian', 4.8),
+('To Kill a Mockingbird', 'Harper Lee', 'Classic', 4.9),
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', 4.7),
+('The Catcher in the Rye', 'J.D. Salinger', 'Classic', 4.6) [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:759)
+	at org.h2.command.Parser.parseColumn(Parser.java:1190)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1175)
+	at org.h2.command.Parser.parseInsert(Parser.java:1549)
+	at org.h2.command.Parser.parsePrepared(Parser.java:719)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp.query(WebApp.java:1119)
+	at org.h2.server.web.WebApp.process(WebApp.java:245)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+2024-09-29 22:58:35.668972-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- Create the books table\000d\000aCREATE TABLE books (\000d\000a    id INTEGER PRIMARY KEY [*]AUTOINCREMENT,\000d\000a    title TEXT NOT NULL,\000d\000a    author TEXT NOT NULL,\000d\000a    genre TEXT NOT NULL,\000d\000a    rating REAL NOT NULL\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+-- Create the books table
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    genre TEXT NOT NULL,
+    rating REAL NOT NULL
+) [42001-224]
+2024-09-29 22:58:35.669584-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKS" not found; SQL statement:
+-- Insert demo book data
+INSERT INTO books (title, author, genre, rating) VALUES
+('The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 5.0),
+('1984', 'George Orwell', 'Dystopian', 4.8),
+('To Kill a Mockingbird', 'Harper Lee', 'Classic', 4.9),
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', 4.7),
+('The Catcher in the Rye', 'J.D. Salinger', 'Classic', 4.6) [42102-224]
+2024-09-29 22:58:40.892766-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- Create the books table\000d\000aCREATE TABLE books (\000d\000a    id INTEGER PRIMARY KEY [*]AUTOINCREMENT,\000d\000a    title TEXT NOT NULL,\000d\000a    author TEXT NOT NULL,\000d\000a    genre TEXT NOT NULL,\000d\000a    rating REAL NOT NULL\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+-- Create the books table
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    genre TEXT NOT NULL,
+    rating REAL NOT NULL
+) [42001-224]
+2024-09-29 22:58:40.893810-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKS" not found; SQL statement:
+INSERT INTO books (title, author, genre, rating) VALUES
+('The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 5.0),
+('1984', 'George Orwell', 'Dystopian', 4.8),
+('To Kill a Mockingbird', 'Harper Lee', 'Classic', 4.9),
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', 4.7),
+('The Catcher in the Rye', 'J.D. Salinger', 'Classic', 4.6) [42102-224]
+2024-09-29 22:58:55.744505-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE books (\000d\000a    id INTEGER PRIMARY KEY [*]AUTOINCREMENT,\000d\000a    title TEXT NOT NULL,\000d\000a    author TEXT NOT NULL,\000d\000a    genre TEXT NOT NULL,\000d\000a    rating REAL NOT NULL\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    genre TEXT NOT NULL,
+    rating REAL NOT NULL
+) [42001-224]
+2024-09-29 22:58:55.745020-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKS" not found; SQL statement:
+INSERT INTO books (title, author, genre, rating) VALUES
+('The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 5.0),
+('1984', 'George Orwell', 'Dystopian', 4.8),
+('To Kill a Mockingbird', 'Harper Lee', 'Classic', 4.9),
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', 4.7),
+('The Catcher in the Rye', 'J.D. Salinger', 'Classic', 4.6) [42102-224]
+2024-09-29 23:00:16.597439-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE books (\000d\000a    id INTEGER PRIMARY KEY [*]AUTOINCREMENT,\000d\000a    title TEXT NOT NULL,\000d\000a    author TEXT NOT NULL,\000d\000a    genre TEXT NOT NULL,\000d\000a    rating REAL NOT NULL\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    genre TEXT NOT NULL,
+    rating REAL NOT NULL
+) [42001-224]
+2024-09-29 23:00:16.598393-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKS" not found; SQL statement:
+INSERT INTO books (title, author, genre, rating) VALUES
+('The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 5.0),
+('1984', 'George Orwell', 'Dystopian', 4.8),
+('To Kill a Mockingbird', 'Harper Lee', 'Classic', 4.9),
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', 4.7),
+('The Catcher in the Rye', 'J.D. Salinger', 'Classic', 4.6) [42102-224]
+2024-09-29 23:00:20.313749-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "-- Create the books table with additional columns for bio and image URL\000d\000aCREATE TABLE books (\000d\000a    id INTEGER PRIMARY KEY [*]AUTOINCREMENT,\000d\000a    title TEXT NOT NULL,\000d\000a    author TEXT NOT NULL,\000d\000a    genre TEXT NOT NULL,\000d\000a    rating REAL NOT NULL,\000d\000a    bio TEXT NOT NULL,\000d\000a    image_url TEXT\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+-- Create the books table with additional columns for bio and image URL
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    genre TEXT NOT NULL,
+    rating REAL NOT NULL,
+    bio TEXT NOT NULL,
+    image_url TEXT
+) [42001-224]
+2024-09-29 23:00:20.315391-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKS" not found; SQL statement:
+-- Insert demo book data with bios and image URLs
+INSERT INTO books (title, author, genre, rating, bio, image_url) VALUES
+('The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 5.0, 
+ 'J.R.R. Tolkien was an English writer, poet, and professor, best known for The Hobbit and The Lord of the Rings.', 
+ 'https://example.com/images/the_hobbit.jpg'),
+('1984', 'George Orwell', 'Dystopian', 4.8, 
+ 'George Orwell, known for his social criticism, wrote famous novels like Animal Farm and 1984.', 
+ 'https://example.com/images/1984.jpg'),
+('To Kill a Mockingbird', 'Harper Lee', 'Classic', 4.9, 
+ 'Harper Lee was an American novelist best known for her Pulitzer Prize-winning novel, To Kill a Mockingbird.', 
+ 'https://example.com/images/to_kill_a_mockingbird.jpg'),
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', 4.7, 
+ 'F. Scott Fitzgerald was an American novelist, widely regarded as one of the greatest American writers of the 20th century.', 
+ 'https://example.com/images/the_great_gatsby.jpg'),
+('The Catcher in the Rye', 'J.D. Salinger', 'Classic', 4.6, 
+ 'J.D. Salinger was an American writer, best known for his widely-read novel, The Catcher in the Rye.', 
+ 'https://example.com/images/the_catcher_in_the_rye.jpg') [42102-224]
+2024-09-29 23:00:27.448880-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE books (\000d\000a    id INTEGER PRIMARY KEY [*]AUTOINCREMENT,\000d\000a    title TEXT NOT NULL,\000d\000a    author TEXT NOT NULL,\000d\000a    genre TEXT NOT NULL,\000d\000a    rating REAL NOT NULL,\000d\000a    bio TEXT NOT NULL,\000d\000a    image_url TEXT\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    genre TEXT NOT NULL,
+    rating REAL NOT NULL,
+    bio TEXT NOT NULL,
+    image_url TEXT
+) [42001-224]
+2024-09-29 23:00:27.449466-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKS" not found; SQL statement:
+-- Insert demo book data with bios and image URLs
+INSERT INTO books (title, author, genre, rating, bio, image_url) VALUES
+('The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 5.0, 
+ 'J.R.R. Tolkien was an English writer, poet, and professor, best known for The Hobbit and The Lord of the Rings.', 
+ 'https://example.com/images/the_hobbit.jpg'),
+('1984', 'George Orwell', 'Dystopian', 4.8, 
+ 'George Orwell, known for his social criticism, wrote famous novels like Animal Farm and 1984.', 
+ 'https://example.com/images/1984.jpg'),
+('To Kill a Mockingbird', 'Harper Lee', 'Classic', 4.9, 
+ 'Harper Lee was an American novelist best known for her Pulitzer Prize-winning novel, To Kill a Mockingbird.', 
+ 'https://example.com/images/to_kill_a_mockingbird.jpg'),
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', 4.7, 
+ 'F. Scott Fitzgerald was an American novelist, widely regarded as one of the greatest American writers of the 20th century.', 
+ 'https://example.com/images/the_great_gatsby.jpg'),
+('The Catcher in the Rye', 'J.D. Salinger', 'Classic', 4.6, 
+ 'J.D. Salinger was an American writer, best known for his widely-read novel, The Catcher in the Rye.', 
+ 'https://example.com/images/the_catcher_in_the_rye.jpg') [42102-224]
+2024-09-29 23:00:33.248964-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE books (\000d\000a    id INTEGER PRIMARY KEY [*]AUTOINCREMENT,\000d\000a    title TEXT NOT NULL,\000d\000a    author TEXT NOT NULL,\000d\000a    genre TEXT NOT NULL,\000d\000a    rating REAL NOT NULL,\000d\000a    bio TEXT NOT NULL,\000d\000a    image_url TEXT\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    genre TEXT NOT NULL,
+    rating REAL NOT NULL,
+    bio TEXT NOT NULL,
+    image_url TEXT
+) [42001-224]
+2024-09-29 23:00:33.252457-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKS" not found; SQL statement:
+INSERT INTO books (title, author, genre, rating, bio, image_url) VALUES
+('The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 5.0, 
+ 'J.R.R. Tolkien was an English writer, poet, and professor, best known for The Hobbit and The Lord of the Rings.', 
+ 'https://example.com/images/the_hobbit.jpg'),
+('1984', 'George Orwell', 'Dystopian', 4.8, 
+ 'George Orwell, known for his social criticism, wrote famous novels like Animal Farm and 1984.', 
+ 'https://example.com/images/1984.jpg'),
+('To Kill a Mockingbird', 'Harper Lee', 'Classic', 4.9, 
+ 'Harper Lee was an American novelist best known for her Pulitzer Prize-winning novel, To Kill a Mockingbird.', 
+ 'https://example.com/images/to_kill_a_mockingbird.jpg'),
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', 4.7, 
+ 'F. Scott Fitzgerald was an American novelist, widely regarded as one of the greatest American writers of the 20th century.', 
+ 'https://example.com/images/the_great_gatsby.jpg'),
+('The Catcher in the Rye', 'J.D. Salinger', 'Classic', 4.6, 
+ 'J.D. Salinger was an American writer, best known for his widely-read novel, The Catcher in the Rye.', 
+ 'https://example.com/images/the_catcher_in_the_rye.jpg') [42102-224]
+2024-09-29 23:00:33.932751-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE books (\000d\000a    id INTEGER PRIMARY KEY [*]AUTOINCREMENT,\000d\000a    title TEXT NOT NULL,\000d\000a    author TEXT NOT NULL,\000d\000a    genre TEXT NOT NULL,\000d\000a    rating REAL NOT NULL,\000d\000a    bio TEXT NOT NULL,\000d\000a    image_url TEXT\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    genre TEXT NOT NULL,
+    rating REAL NOT NULL,
+    bio TEXT NOT NULL,
+    image_url TEXT
+) [42001-224]
+2024-09-29 23:00:33.933420-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKS" not found; SQL statement:
+INSERT INTO books (title, author, genre, rating, bio, image_url) VALUES
+('The Hobbit', 'J.R.R. Tolkien', 'Fantasy', 5.0, 
+ 'J.R.R. Tolkien was an English writer, poet, and professor, best known for The Hobbit and The Lord of the Rings.', 
+ 'https://example.com/images/the_hobbit.jpg'),
+('1984', 'George Orwell', 'Dystopian', 4.8, 
+ 'George Orwell, known for his social criticism, wrote famous novels like Animal Farm and 1984.', 
+ 'https://example.com/images/1984.jpg'),
+('To Kill a Mockingbird', 'Harper Lee', 'Classic', 4.9, 
+ 'Harper Lee was an American novelist best known for her Pulitzer Prize-winning novel, To Kill a Mockingbird.', 
+ 'https://example.com/images/to_kill_a_mockingbird.jpg'),
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Classic', 4.7, 
+ 'F. Scott Fitzgerald was an American novelist, widely regarded as one of the greatest American writers of the 20th century.', 
+ 'https://example.com/images/the_great_gatsby.jpg'),
+('The Catcher in the Rye', 'J.D. Salinger', 'Classic', 4.6, 
+ 'J.D. Salinger was an American writer, best known for his widely-read novel, The Catcher in the Rye.', 
+ 'https://example.com/images/the_catcher_in_the_rye.jpg') [42102-224]
+2024-09-29 23:01:16.910092-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS books (\000d\000a    id INTEGER PRIMARY KEY [*]AUTOINCREMENT,\000d\000a    title TEXT NOT NULL,\000d\000a    author TEXT NOT NULL,\000d\000a    genre TEXT NOT NULL,\000d\000a    rating REAL NOT NULL,\000d\000a    bio TEXT NOT NULL,\000d\000a    image_url TEXT\000d\000a)"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    genre TEXT NOT NULL,
+    rating REAL NOT NULL,
+    bio TEXT NOT NULL,
+    image_url TEXT
+) [42001-224]

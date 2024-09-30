@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sidebar styling */
+.sidebar {
+    background-color: #f9d57f;
+    width: 250px;
+    padding: 20px;
+    min-height: 100vh;
+    position: fixed; /* Sidebar stays fixed while scrolling */
+    top: 0;
+    left: 0;
+}
+
+.sidebar h1, .sidebar p {
+    margin: 0;
+}
+
+.sidebar p {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Main content area */
+.content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 270px; /* Add margin to avoid content overlap with sidebar */
+    overflow-y: auto;
+}
+
+.book-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.book-item {
+    width: 100%; /* Adjust width to fit the container */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.book-item img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.book-item .details {
+    margin-top: 10px;
+}
+
+.book-item .details h2 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.book-item .details p {
+    margin: 5px 0;
+}
+
+.book-item .status {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Progress buttons */
+.progress-bar {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.progress-bar .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #aaa;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    font-size: 14px;
+    color: #555;
+}
+
+.edit-btn {
+    margin-top: 10px;
+    background-color: #aaa;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
