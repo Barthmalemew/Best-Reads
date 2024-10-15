@@ -18,6 +18,27 @@
     <p>Collection 1</p>
 </div>
 
+<dialog class="dialog">
+
+    <div>
+        <form>
+            <label for="collection"> Collection Name: </label>
+            <input type="text" name="collection" required />
+            <input type="submit" value="Submit" class="btn" />
+        </form>
+        <button class="close-btn">Close</button>
+    </div>
+
+</dialog>
+
+<dialog class="dialog">
+    <div>
+        Add book Info
+        <button class="close-btn">Close</button>
+    </div>
+
+</dialog>
+
 <!-- Main content -->
 <div class="content">
     <div class="progress-bar">
@@ -26,6 +47,8 @@
         <div class="circle">Pages 100</div>
         <div class="circle">Pages 100</div>
     </div>
+
+    <hr>
 
     <div class="book-list" id="bookList">
         <!-- Books will be dynamically injected here -->

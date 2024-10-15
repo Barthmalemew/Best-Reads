@@ -1,19 +1,27 @@
-body {
+html, body {
     font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: row;
     margin: 0;
     padding: 0;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    
 }
 
 /* Sidebar styling */
 .sidebar {
-    background-color: #f9d57f;
+    background-color: #FFD46F;
     width: 250px;
+    height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
     padding: 20px;
-    min-height: 100vh;
-    position: fixed; /* Sidebar stays fixed while scrolling */
-    top: 0;
-    left: 0;
+    position: sticky;   
+    top: 0 ;
+    border-radius: 0px 30px 30px 0px;
+    text-align: center;
 }
 
 .sidebar h1, .sidebar p {
@@ -27,33 +35,49 @@ body {
 
 /* Main content area */
 .content {
-    flex: 1;
-    padding: 20px;
-    margin-left: 270px; /* Add margin to avoid content overlap with sidebar */
+    padding: 30px;
     overflow-y: auto;
+    flex-grow: 1;
 }
 
 .book-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
+    padding:0px;
 }
 
 .book-item {
+    display: flex;
     width: 100%; /* Adjust width to fit the container */
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 1px 10px 53px -16px rgba(0,0,0,0.24);
 }
+
 
 .book-item img {
     max-width: 100%;
     border-radius: 5px;
+
 }
 
 .book-item .details {
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 30px;
+    border-right: 2px;    
+    border-image: radial-gradient(rgb(121, 121, 121),rgb(197, 197, 197,0));
+    border-image-slice: 0 5 0 0;
+    border-image-width: 2px;
+}
+
+.book-item .bio {
+    text-align: center;
+    width: 500px;
+    flex-grow: 1;
+
 }
 
 .book-item .details h2 {
@@ -68,6 +92,12 @@ body {
 .book-item .status {
     margin-top: 10px;
     font-weight: bold;
+    margin-top: auto;
+}
+.book-item .img-edit-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
 }
 
 /* Progress buttons */
@@ -81,20 +111,39 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #aaa;
-    border-radius: 50%;
-    width: 80px;
+    border: 5px solid #938BB2;
+    border-radius: 50px/40px;
+    width: 150px;
     height: 80px;
     font-size: 14px;
     color: #555;
 }
 
-.edit-btn {
+.btn, .close-btn{
     margin-top: 10px;
     background-color: #aaa;
     color: white;
     border: none;
     padding: 5px 10px;
+    margin: 0px 10px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.btn:hover, .close-btn:hover {
+    background-color: #d9d9d9;
+}
+
+.dialog div{
+    display: flex;
+}
+
+hr {
+    margin: 20px;
+}
+
+
+::backdrop {
+
+    backdrop-filter: blur(5px);
 }
