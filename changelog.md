@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [ ] Prepare deployment scripts and documentation
 
 ---
-## [0.0.14]
+## [0.0.14] - 2024-10-24
 
 ### Added
 
