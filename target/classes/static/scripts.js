@@ -11,16 +11,21 @@ async function fetchBooks() {
             bookItem.classList.add('book-item');
 
             bookItem.innerHTML = `
-                <img src="${book.image_url ? book.image_url : 'https://covers.openlibrary.org/b/id/8236211-L.jpg'}" alt="Book cover">
+                <div class="img-edit-btn">
+                    <img src="${book.image_url ? book.image_url : 'https://covers.openlibrary.org/b/id/8236211-L.jpg'}" alt="Book cover">
+                    <button class="btn">Edit</button>
+                </div>
+
                 <div class="details">
                     <h2>${book.title}</h2>
                     <p><strong>Author:</strong> ${book.author}</p>
                     <p><strong>Genre:</strong> ${book.genre}</p>
                     <p><strong>Rating:</strong> ${book.rating}/5</p>
-                    <p class="bio"><strong>Bio:</strong> ${book.bio}</p>
+                    <div class="status">Completed</div>
                 </div>
-                <div class="status">Completed</div>
-                <button class="edit-btn">Edit</button>
+
+                <p class="bio"><strong>Bio:</strong> <br> ${book.bio}</p>
+
             `;
 
             bookList.appendChild(bookItem);
@@ -32,3 +37,28 @@ async function fetchBooks() {
 }
 
 window.onload = fetchBooks;
+
+const openBtnCol = document.querySelectorAll(".sidebar p")[2];
+const openBtnAdd = document.querySelectorAll(".sidebar p")[0];
+const dialogCol = document.getElementsByClassName("dialog")[0];
+const dialogAdd = document.getElementsByClassName("dialog")[1];
+const closeBtnCol = document.getElementsByClassName("close-btn")[0];
+const closeBtnAdd = document.getElementsByClassName("close-btn")[1];
+
+openBtnAdd.addEventListener("click", () =>{
+    dialogAdd.showModal();
+});
+
+closeBtnAdd.addEventListener("click", () => {
+    
+    dialogAdd.close();
+});
+
+openBtnCol.addEventListener("click", () =>{
+    dialogCol.showModal();
+});
+
+closeBtnCol.addEventListener("click", () => {
+
+    dialogCol.close();
+});

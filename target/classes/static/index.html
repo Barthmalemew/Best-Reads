@@ -18,6 +18,53 @@
     <p>Collection 1</p>
 </div>
 
+<dialog class="dialog">
+
+    <div id="add-col">
+        <form>
+            <label for="collection"> Collection Name: </label>
+            <input type="text" name="collection" required />
+            <input type="submit" value="Submit" class="btn" />
+        </form>
+        <button class="close-btn">Close</button>
+    </div>
+
+</dialog>
+
+<dialog class="dialog">
+    <div>
+        <form class="dia-col">
+            <label for="title"> Title: </label>
+            <input type="text" name="title" required/>
+            <label for="author"> Author: </label>
+            <input type="text" name="author" required/>
+            <label for="genre"> Genre: </label>
+            <input type="text" name="genre" required/>
+            <label for="rating"> Rating: </label>
+            <input type="text" name="rating" />
+            <fieldset>
+                <legend>Status</legend>
+                <label for="status"> Not Started: </label>
+                <input type="radio" name="status" value="Not Started" checked />
+                <label for="status"> In Progress: </label>
+                <input type="radio" name="status" value="In Progress"/>
+                <label for="status"> Complete: </label>
+                <input type="radio" name="status" value="Complete" />
+            </fieldset>
+            <label for="bio"> Bio: </label>
+            <input type="text" name="bio" required/>
+            <label for="image"> Image(working on it): </label>
+            <input type="text" name="image" />
+            <div>
+                <input type="submit" value="Submit" class="btn" />
+                <button type="button" type="close-btn">Close</button>
+            </div>
+
+        </form>
+    </div>
+
+</dialog>
+
 <!-- Main content -->
 <div class="content">
     <div class="progress-bar">
@@ -26,6 +73,8 @@
         <div class="circle">Pages 100</div>
         <div class="circle">Pages 100</div>
     </div>
+
+    <hr>
 
     <div class="book-list" id="bookList">
         <!-- Books will be dynamically injected here -->
