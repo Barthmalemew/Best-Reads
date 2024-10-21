@@ -6,13 +6,13 @@ html, body {
     padding: 0;
     justify-content: space-between;
     height: 100%;
-    width: 100%;
-    
+    width: 100%;    
 }
 
-/* Sidebar styling */
+/* -------Sidebar styling------- */
 .sidebar {
-    background-color: #FFD46F;
+    background-color: #755b47;
+    color:white;
     width: 250px;
     height: 100%;
     min-height: 100%;
@@ -20,8 +20,10 @@ html, body {
     padding: 20px;
     position: sticky;   
     top: 0 ;
-    border-radius: 0px 30px 30px 0px;
+    /*border-radius: 0px 30px 30px 0px;*/
     text-align: center;
+    outline: 6px double rgb(213, 213, 5);
+    outline-offset: -10px;
 }
 
 .sidebar h1, .sidebar p {
@@ -33,13 +35,41 @@ html, body {
     cursor: pointer;
 }
 
-/* Main content area */
+/* -------Main content area------- */
 .content {
     padding: 30px;
     overflow-y: auto;
     flex-grow: 1;
+    background-image: radial-gradient(white ,90%,rgb(243, 243, 202));
+
 }
 
+/* -------Progress buttons------- */
+.progress-bar {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.progress-bar .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #000000;
+    border-radius: 50px/40px;
+    width: 150px;
+    height: 80px;
+    font-size: 14px;
+    color: #555;
+    background-color: white;
+}
+
+/*-------line-------*/
+hr {
+    margin: 20px;
+}
+
+/*-------book list-------*/
 .book-list {
     display: flex;
     flex-direction: column;
@@ -48,6 +78,7 @@ html, body {
 }
 
 .book-item {
+    background-color: white;
     display: flex;
     width: 100%; /* Adjust width to fit the container */
     border: 1px solid #ddd;
@@ -100,25 +131,7 @@ html, body {
     justify-content:space-between;
 }
 
-/* Progress buttons */
-.progress-bar {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-}
-
-.progress-bar .circle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 5px solid #938BB2;
-    border-radius: 50px/40px;
-    width: 150px;
-    height: 80px;
-    font-size: 14px;
-    color: #555;
-}
-
+/* -------Button Styling-------*/
 .btn, .close-btn{
     margin-top: 10px;
     background-color: #aaa;
@@ -134,14 +147,16 @@ html, body {
     background-color: #d9d9d9;
 }
 
-.dialog div{
+/* -------Dialog Styling------- */
+.dialog form{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-hr {
-    margin: 20px;
+#add-col{
+    flex-direction: row;
 }
-
 
 ::backdrop {
 

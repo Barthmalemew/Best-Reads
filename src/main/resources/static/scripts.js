@@ -50,7 +50,7 @@ openBtnAdd.addEventListener("click", () =>{
 });
 
 closeBtnAdd.addEventListener("click", () => {
-
+    
     dialogAdd.close();
 });
 
