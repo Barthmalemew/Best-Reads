@@ -44,6 +44,9 @@ const dialogCol = document.getElementsByClassName("dialog")[0];
 const dialogAdd = document.getElementsByClassName("dialog")[1];
 const closeBtnCol = document.getElementsByClassName("close-btn")[0];
 const closeBtnAdd = document.getElementsByClassName("close-btn")[1];
+const colForm = document.querySelectorAll("form")[0]
+const AddForm = document.querySelectorAll("form")[1]
+
 
 openBtnAdd.addEventListener("click", () =>{
     dialogAdd.showModal();
@@ -51,6 +54,7 @@ openBtnAdd.addEventListener("click", () =>{
 
 closeBtnAdd.addEventListener("click", () => {
     
+    AddForm.reset();
     dialogAdd.close();
 });
 
@@ -60,5 +64,6 @@ openBtnCol.addEventListener("click", () =>{
 
 closeBtnCol.addEventListener("click", () => {
 
+    colForm.reset();
     dialogCol.close();
 });
