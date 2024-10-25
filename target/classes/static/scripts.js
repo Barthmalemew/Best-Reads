@@ -21,10 +21,10 @@ async function fetchBooks() {
                     <p><strong>Author:</strong> ${book.author}</p>
                     <p><strong>Genre:</strong> ${book.genre}</p>
                     <p><strong>Rating:</strong> ${book.rating}/5</p>
-                    <div class="status">Completed</div>
+                    <p><strong>Status:</strong> ${book.status}</p>
                 </div>
 
-                <p class="bio"><strong>Bio:</strong> <br> ${book.bio}</p>
+                <p class="synopsis"><strong>Synopsis:</strong> <br> ${book.synopsis}</p>
 
             `;
 

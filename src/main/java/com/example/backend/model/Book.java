@@ -52,12 +52,12 @@ public class Book {
         this.rating = rating;
     }
 
-    public String getBio() {
-        return bio;
+    public String getSynopsis() {
+        return synopsis;
     }
 
-    public void setBio(String bio) {
-        this.bio = bio;
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
     }
 
     public String getImage_url() {
@@ -68,11 +68,20 @@ public class Book {
         this.image_url = image_url;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     private String author;
     private String genre;
     private double rating;
-    private String bio;
+    private String synopsis;
     private String image_url;
+    private String status;
 
     // Getters and setters
 }
