@@ -38,14 +38,18 @@ async function fetchBooks() {
 
 window.onload = fetchBooks;
 
-const openBtnCol = document.querySelectorAll(".sidebar p")[2];
 const openBtnAdd = document.querySelectorAll(".sidebar p")[0];
+const openBtnPage = document.querySelectorAll(".sidebar p")[1];
+const openBtnCol = document.querySelectorAll(".sidebar p")[2];
 const dialogCol = document.getElementsByClassName("dialog")[0];
-const dialogAdd = document.getElementsByClassName("dialog")[1];
+const dialogPage = document.getElementsByClassName("dialog")[1];
+const dialogAdd = document.getElementsByClassName("dialog")[2];
 const closeBtnCol = document.getElementsByClassName("close-btn")[0];
-const closeBtnAdd = document.getElementsByClassName("close-btn")[1];
-const colForm = document.querySelectorAll("form")[0]
-const AddForm = document.querySelectorAll("form")[1]
+const closeBtnPage = document.getElementsByClassName("close-btn")[1];
+const closeBtnAdd = document.getElementsByClassName("close-btn")[2];
+const colForm = document.querySelectorAll("form")[0];
+const pageForm = document.querySelectorAll("form")[1];
+const AddForm = document.querySelectorAll("form")[2];
 
 
 openBtnAdd.addEventListener("click", () =>{
@@ -66,4 +70,14 @@ closeBtnCol.addEventListener("click", () => {
 
     colForm.reset();
     dialogCol.close();
+});
+
+openBtnPage.addEventListener("click", () =>{
+    dialogPage.showModal();
+});
+
+closeBtnPage.addEventListener("click", () => {
+
+    pageForm.reset();
+    dialogPage.close();
 });
