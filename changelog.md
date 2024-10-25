@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 - Added form to "Log Pages
 - Added pop up animation to book cards. I also left a code comment that inverts the direction of the animation that I think looks better but feels off in functionality.
+- Added a function to display the totalPages from the API to the first "circle"
 
 ## [0.0.14] - 2024-10-24
 
