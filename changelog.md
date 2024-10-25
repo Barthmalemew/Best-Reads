@@ -16,6 +16,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [ ] Prepare deployment scripts and documentation
 
 ---
+## [0.0.15] - 2024-10-25
+
+### Changed
+- Changed the SideBar color because it supposedly looked weird(IDK I'm color blind)
+
+### Added
+- Added form to "Log Pages
+- Added pop up animation to book cards. I also left a code comment that inverts the direction of the animation that I think looks better but feels off in functionality.
+
 ## [0.0.14] - 2024-10-24
 
 ### Added
