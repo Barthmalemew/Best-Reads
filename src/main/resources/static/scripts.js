@@ -9,6 +9,8 @@ async function fetchBooks() {
         books.forEach(book => {
             const bookItem = document.createElement('div');
             bookItem.classList.add('book-item');
+            bookItem.classList.add('BookCardPop');
+
 
             bookItem.innerHTML = `
                 <div class="img-edit-btn">

@@ -166,3 +166,26 @@ hr {
 
     backdrop-filter: blur(5px);
 }
+
+/*-------Animations-------*/
+
+.BookCardPop
+{
+    animation-name: pop;
+    animation-duration: 6ms;
+    view-timeline-name: --cardPop;
+    animation-timeline: --cardPop;
+    animation-direction: alternate;
+    /*animation-direction: alternate-reverse;(I like this one but seems counter intuitive*/
+    animation-iteration-count: 2;
+}
+
+@keyframes pop{
+    from{
+        scale: 100%;
+    }
+
+    to {
+        scale: 102%;
+    }
+}
