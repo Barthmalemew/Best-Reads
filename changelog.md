@@ -16,6 +16,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [ ] Prepare deployment scripts and documentation
 
 ---
+## [0.0.16] - 2024-10-27
+
+### Added
+- Added java functions for calculating total books and etc
+- Started working on the code for logging pages and also getting the average pages read.
+
 ## [0.0.15] - 2024-10-25
 
 ### Changed
