@@ -38,7 +38,23 @@ async function fetchBooks() {
     }
 }
 
-window.onload = fetchBooks;
+async function fetchTotalPages() {
+    try {
+        const response = await fetch('/api/log/totalPages');
+        const data = await response.json();
+        document.getElementById('totalPages').innerText = `Total Pages Read: ${data}`;
+    } catch (error) {
+        console.error('Error fetching totalPages:', error);
+        document.getElementById('totalPages').innerText = `Error fetching total pages. Please try again later.`;
+    }
+}
+
+function initialize () {
+    fetchBooks();
+    fetchTotalPages();
+}
+
+window.onload = initialize;
 
 const openBtnAdd = document.querySelectorAll(".sidebar p")[0];
 const openBtnPage = document.querySelectorAll(".sidebar p")[1];
