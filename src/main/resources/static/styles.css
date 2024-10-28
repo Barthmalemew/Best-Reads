@@ -30,6 +30,11 @@ html, body {
     margin: 0;
 }
 
+.sidebar h3{
+
+    border-bottom: 2px solid #FFE100;
+}
+
 .sidebar p {
     margin-top: 20px;
     cursor: pointer;
@@ -176,7 +181,10 @@ hr {
     view-timeline-name: --cardPop;
     animation-timeline: --cardPop;
     animation-direction: alternate;
-    /*animation-direction: alternate-reverse;(I like this one but seems counter intuitive*/
+
+    /*I like this one but seems counter intuitive*/
+    /*animation-direction: alternate-reverse;*/
+
     animation-iteration-count: 2;
 }
 
