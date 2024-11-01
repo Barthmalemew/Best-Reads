@@ -6,7 +6,7 @@ html, body {
     padding: 0;
     justify-content: space-between;
     height: 100%;
-    width: 100%;    
+    width: 100%;   
 }
 
 /* -------Sidebar styling------- */
@@ -67,6 +67,7 @@ html, body {
     font-size: 14px;
     color: #000000;
     background-color: white;
+    margin: 20px;
 }
 
 /*-------line-------*/
@@ -97,10 +98,11 @@ hr {
     max-width: 100%;
     border-radius: 5px;
     height: 250px;
+    width: 175px;
     padding: 10px;
     border-radius: 25px ;
-    
-
+    justify-self: center;
+    align-self: center;
 }
 
 .book-item .details {
@@ -111,13 +113,14 @@ hr {
     border-image: radial-gradient(rgb(121, 121, 121),rgb(197, 197, 197,0));
     border-image-slice: 0 5 0 0;
     border-image-width: 2px;
+    justify-items: center;
+    align-items: center;
 }
 
 .book-item .synopsis {
     text-align: center;
     width: 500px;
     flex-grow: 1;
-
 }
 
 .book-item .details h2 {
@@ -195,5 +198,20 @@ hr {
 
     to {
         scale: 102%;
+    }
+}
+
+
+@media screen and (max-width: 900px){
+    .book-item{
+        flex-direction: column;
+    }
+    .book-item .details {
+        border: none;
+    }
+
+    .book-item .synopsis{
+        width: auto;
+        padding: 30px;
     }
 }
