@@ -16,6 +16,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [ ] Prepare deployment scripts and documentation
 
 ---
+## [0.0.17] - 2024-11-01
+
+### Added
+- Average Pages Read button has been implemented and it works
+
 ## [0.0.16] - 2024-10-27
 
 ### Added
