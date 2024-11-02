@@ -14,7 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [ ] Connect the frontend with backend APIs
 - [ ] Write unit and integration tests
 - [ ] Prepare deployment scripts and documentation
+---
+## [0.0.18] - 2024-11-02
 
+### Added
+- Average Pages Read button has been implemented and it works
+- Total Pages button has been implemented and works
+- Favorite Genre button haas been implemented and works
+- Longest Pages button as been implemented and works
 ---
 ## [0.0.17] - 2024-11-01
 
