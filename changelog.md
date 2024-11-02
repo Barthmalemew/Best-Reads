@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Total Pages button has been implemented and works
 - Favorite Genre button haas been implemented and works
 - Longest Pages button as been implemented and works
+- Edit button is supposed to be working but I have problems with it but it has been implemented into the code
 ---
 ## [0.0.17] - 2024-11-01
 
