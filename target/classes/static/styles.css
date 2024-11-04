@@ -160,10 +160,19 @@ hr {
 }
 
 /* -------Dialog Styling------- */
+.dialog {
+    background-image: url(RippedPaper2.png);
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    padding: 50px;
+}
+
 .dialog form{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color:white;
 }
 
 #add-col{
