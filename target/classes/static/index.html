@@ -12,49 +12,45 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <h1>Best Reads</h1>
-    <p>Add Book</p>
-    <p>Log Pages</p>
-    <p>Add Collection</p>
+    <p onclick="openAddBookDialog()">Add Book</p>
+    <p onclick="openLogPagesDialog()">Log Pages</p>
+    <p onclick="openAddCollectionDialog()">Add Collection</p>
     <h3>Collections</h3>
     <div>
         Collection 1
     </div>
 </div>
 
-<!----- Add Collection ----->
-<dialog class="dialog">
-
-    <div id="add-col">
+<!----- Add Collection Dialog ----->
+<dialog id="add-col" class="dialog">
+    <div>
         <form>
             <label for="collection"> Collection Name: </label>
             <input type="text" name="collection" required />
             <div>
                 <input type="submit" value="Submit" class="btn" />
-                <button type="button" class="close-btn">Close</button>
+                <button type="button" class="close-btn" onclick="closeDialog('add-col')">Close</button>
             </div>
         </form>
     </div>
-
 </dialog>
 
-<!----- Add Pages ----->
-<dialog class="dialog">
-
-    <div id="add-col">
-        <form>
+<!----- Log Pages Dialog ----->
+<dialog id="log-pages" class="dialog">
+    <div>
+        <form action="/api/pages/log" method="post">
             <label for="pages"> Pages: </label>
             <input type="text" name="pages" required />
             <div>
                 <input type="submit" value="Submit" class="btn" />
-                <button type="button" class="close-btn">Close</button>
+                <button type="button" class="close-btn" onclick="closeDialog('log-pages')">Close</button>
             </div>
         </form>
     </div>
-
 </dialog>
 
-<!------ Add Book ------>
-<dialog class="dialog">
+<!------ Add Book Dialog ------>
+<dialog id="add-book" class="dialog">
     <div>
         <form>
             <label for="title"> Title: </label>
@@ -80,28 +76,187 @@
             <input type="url" placeholder="https://example.com" name="image" />
             <div>
                 <input type="submit" value="Submit" class="btn" />
-                <button type="button" class="close-btn">Close</button>
+                <button type="button" class="close-btn" onclick="closeDialog('add-book')">Close</button>
             </div>
-
         </form>
     </div>
+</dialog>
 
+<!------ Edit Book Dialog ------>
+<dialog id="edit-book" class="dialog">
+    <div>
+        <form id="edit-book-form">
+            <label for="edit-title"> Title: </label>
+            <input type="text" id="edit-title" name="title" required/>
+            <label for="edit-author"> Author: </label>
+            <input type="text" id="edit-author" name="author" required/>
+            <label for="edit-genre"> Genre: </label>
+            <input type="text" id="edit-genre" name="genre" required/>
+            <label for="edit-rating"> Rating: </label>
+            <input type="text" id="edit-rating" name="rating" />
+            <fieldset>
+                <legend>Status</legend>
+                <label for="edit-status"> Not Started: </label>
+                <input type="radio" id="edit-status-not-started" name="status" value="Not Started" />
+                <label for="edit-status"> In Progress: </label>
+                <input type="radio" id="edit-status-in-progress" name="status" value="In Progress"/>
+                <label for="edit-status"> Complete: </label>
+                <input type="radio" id="edit-status-completed" name="status" value="Completed" />
+            </fieldset>
+            <label for="edit-synopsis"> Synopsis: </label>
+            <input type="text" id="edit-synopsis" name="synopsis" required/>
+            <label for="edit-image"> Image: </label>
+            <input type="url" id="edit-image" placeholder="https://example.com" name="image" />
+            <div>
+                <input type="submit" value="Save Changes" class="btn" />
+                <button type="button" class="close-btn" onclick="closeDialog('edit-book')">Close</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+
+<!------ Favorite Genre Dialog ------>
+<dialog id="favorite-genre" class="dialog">
+    <div>
+        <form action="/api/pages/favoritegenre" method="post">
+            <label for="favoriteGenre">Favorite Genre:</label>
+            <input type="text" id="favoriteGenre" name="favoriteGenre" required>
+            <div>
+                <button type="submit" class="btn">Submit Favorite Genre</button>
+                <button type="button" class="close-btn" onclick="closeDialog('favorite-genre')">Close</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+
+<!------ Longest Pages Dialog ------>
+<dialog id="longest-pages" class="dialog">
+    <div>
+        <form action="/api/pages/longestpages" method="post">
+            <label for="longestPages">Longest Pages:</label>
+            <input type="number" id="longestPages" name="longestPages" required>
+            <div>
+                <button type="submit" class="btn">Submit Longest Pages</button>
+                <button type="button" class="close-btn" onclick="closeDialog('longest-pages')">Close</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+
+<!------ Total Pages Dialog ------>
+<dialog id="total-pages" class="dialog">
+    <div>
+        <form action="/api/pages/totalpages" method="post">
+            <label for="totalPages">Total Pages:</label>
+            <input type="number" id="totalPages" name="totalPages" required>
+            <div>
+                <button type="submit" class="btn">Submit Total Pages</button>
+                <button type="button" class="close-btn" onclick="closeDialog('total-pages')">Close</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+
+<!------ Average Pages Dialog ------>
+<dialog id="average-pages" class="dialog">
+    <div>
+        <form action="/api/pages/averagepages" method="post">
+            <label for="averagePages">Average Pages Read:</label>
+            <input type="number" id="averagePages" name="averagePages" required>
+            <div>
+                <button type="submit" class="btn">Submit Average Pages</button>
+                <button type="button" class="close-btn" onclick="closeDialog('average-pages')">Close</button>
+            </div>
+        </form>
+    </div>
 </dialog>
 
 <!-- Main content -->
 <div class="content">
     <div class="progress-bar">
-        <div class="circle" id="totalPages"> </div>
-        <div class="circle">Pages 100</div>
-        <div class="circle">Pages 100</div>
-        <div class="circle">Pages 100</div>
+        <div class="circle" onclick="opentotalPagesDialog()">Total Pages</div>
+        <div class="circle" onclick="openFavoriteGenreDialog()">Favorite Genre</div>
+        <div class="circle" onclick="openAveragePagesDialog()">Average Pages Read</div>
+        <div class="circle" onclick="openLongestPagesDialog()">Longest Pages</div>
     </div>
 
     <hr>
 
     <div class="book-list" id="bookList">
         <!-- Books will be dynamically injected here -->
+        <div class="book-item" data-book-id="1">
+            <img src="https://upload.wikimedia.org/wikipedia/en/4/4a/TheHobbit_FirstEdition.jpg" alt="The Hobbit Cover">
+            <div class="book-details">
+                <h3>The Hobbit</h3>
+                <p><strong>Author:</strong> J.R.R. Tolkien</p>
+                <p><strong>Genre:</strong> Fantasy</p>
+                <p><strong>Rating:</strong> 5/5</p>
+                <p><strong>Status:</strong> Completed</p>
+                <p><strong>Synopsis:</strong> A great adventure story about hobbits, dwarves, and a dragon.</p>
+                <button onclick="openEditBookDialog(this)">Edit</button>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function openAddBookDialog() {
+            document.getElementById('add-book').showModal();
+        }
+
+        function openLogPagesDialog() {
+            document.getElementById('log-pages').showModal();
+        }
+
+        function openAddCollectionDialog() {
+            document.getElementById('add-col').showModal();
+        }
+
+        function openAveragePagesDialog() {
+            document.getElementById('average-pages').showModal();
+        }
+
+        function opentotalPagesDialog() {
+            document.getElementById('total-pages').showModal();
+        }
+
+        function openFavoriteGenreDialog() {
+            document.getElementById('favorite-genre').showModal();
+        }
+
+        function openLongestPagesDialog() {
+            document.getElementById('longest-pages').showModal();
+        }
+
+        function openEditBookDialog(button) {
+            const bookItem = button.closest('.book-item');
+            const title = bookItem.querySelector('h3').innerText;
+            const author = bookItem.querySelector('p:nth-of-type(1)').innerText.replace('Author: ', '');
+            const genre = bookItem.querySelector('p:nth-of-type(2)').innerText.replace('Genre: ', '');
+            const rating = bookItem.querySelector('p:nth-of-type(3)').innerText.replace('Rating: ', '');
+            const status = bookItem.querySelector('p:nth-of-type(4)').innerText.replace('Status: ', '');
+            const synopsis = bookItem.querySelector('p:nth-of-type(5)').innerText.replace('Synopsis: ', '');
+
+            document.getElementById('edit-title').value = title;
+            document.getElementById('edit-author').value = author;
+            document.getElementById('edit-genre').value = genre;
+            document.getElementById('edit-rating').value = rating;
+            document.getElementById('edit-synopsis').value = synopsis;
+
+            if (status === 'Not Started') {
+                document.getElementById('edit-status-not-started').checked = true;
+            } else if (status === 'In Progress') {
+                document.getElementById('edit-status-in-progress').checked = true;
+            } else if (status === 'Completed') {
+                document.getElementById('edit-status-completed').checked = true;
+            }
+
+            document.getElementById('edit-book').showModal();
+        }
+
+        function closeDialog(dialogId) {
+            document.getElementById(dialogId).close();
+        }
+    </script>
 </div>
 </body>
 </html>
