@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 // JpaRepository provides basic CRUD operations without the need for implementation
 public interface LogRepository extends JpaRepository<Log, Long> {
 
-    @Query("SELECT SUM(log.pagesRead) FROM Log log")
+    @Query("SELECT SUM(pagesRead) FROM Log log")
     Integer getTotalPages();
 
 }
