@@ -54,6 +54,35 @@ function initialize () {
     fetchTotalPages();
 }
 
+
+
+function openEditBookDialog(button) {
+    const bookItem = button.closest('.book-item');
+    const title = bookItem.querySelector('h3').innerText;
+    const author = bookItem.querySelector('p:nth-of-type(1)').innerText.replace('Author: ', '');
+    const genre = bookItem.querySelector('p:nth-of-type(2)').innerText.replace('Genre: ', '');
+    const rating = bookItem.querySelector('p:nth-of-type(3)').innerText.replace('Rating: ', '');
+    const status = bookItem.querySelector('p:nth-of-type(4)').innerText.replace('Status: ', '');
+    const synopsis = bookItem.querySelector('p:nth-of-type(5)').innerText.replace('Synopsis: ', '');
+
+    document.getElementById('edit-title').value = title;
+    document.getElementById('edit-author').value = author;
+    document.getElementById('edit-genre').value = genre;
+    document.getElementById('edit-rating').value = rating;
+    document.getElementById('edit-synopsis').value = synopsis;
+
+    if (status === 'Not Started') {
+        document.getElementById('edit-status-not-started').checked = true;
+    } else if (status === 'In Progress') {
+        document.getElementById('edit-status-in-progress').checked = true;
+    } else if (status === 'Completed') {
+        document.getElementById('edit-status-completed').checked = true;
+    }
+
+    document.getElementById('edit-book').showModal();
+}
+
+
 window.onload = initialize;
 
 const openBtnAdd = document.querySelectorAll(".sidebar p")[0];
