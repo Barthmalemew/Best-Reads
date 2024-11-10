@@ -10,12 +10,12 @@ async function fetchBooks() {
             const bookItem = document.createElement('div');
             bookItem.classList.add('book-item');
             bookItem.classList.add('BookCardPop');
-
+            bookItem.dataset.bookId = book.id; // Add data attribute for book ID
 
             bookItem.innerHTML = `
                 <div class="img-edit-btn">
                     <img src="${book.image_url ? book.image_url : 'https://covers.openlibrary.org/b/id/8236211-L.jpg'}" alt="Book cover">
-                    <button class="btn">Edit</button>
+                    <button class="btn" onclick="openEditBookDialog(this)">Edit</button>
                 </div>
 
                 <div class="details">
@@ -54,34 +54,43 @@ function initialize () {
     fetchTotalPages();
 }
 
-async function submitBook(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
-
+async function submitBook(formData) {
+    // Validate and clean the data before sending
     const bookData = {
         title: formData.get('title'),
         author: formData.get('author'),
         genre: formData.get('genre'),
-        rating: parseFloat(formData.get('rating')),
+        rating: formData.get('rating') ? parseFloat(formData.get('rating')) : 0,
         status: formData.get('status'),
-        synopsis: formData.get('synopsis'),
-        image_url: formData.get('image')
+        synopsis: formData.get('synopsis') || '',
+        image_url: formData.get('image') || 'https://covers.openlibrary.org/b/id/8236211-L.jpg'
     };
+    
+    // Validate required fields
+    if (!bookData.title?.trim() || !bookData.author?.trim()) {
+        throw new Error('Title and author are required');
+    }
 
+    console.log('Processed book data:', bookData);
+    
     try {
         const response = await fetch('/api/books', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(bookData)
         });
-
+        
+        const responseData = await response.json();
         if (!response.ok) {
-            throw new Error('Failed to add book');
+            throw new Error(responseData.message || 'Failed to add book');
         }
+        await fetchBooks();
         showToast('Book added successfully!');
+        return true;
     } catch (error) {
+        console.error('Error submitting book:', error);
         showToast(error.message, 'error');
+        return false;
     }
 }
 
@@ -103,12 +112,14 @@ function showToast(message, type = 'success') {
 
 function openEditBookDialog(button) {
     const bookItem = button.closest('.book-item');
-    const title = bookItem.querySelector('h3').innerText;
-    const author = bookItem.querySelector('p:nth-of-type(1)').innerText.replace('Author: ', '');
-    const genre = bookItem.querySelector('p:nth-of-type(2)').innerText.replace('Genre: ', '');
-    const rating = bookItem.querySelector('p:nth-of-type(3)').innerText.replace('Rating: ', '');
-    const status = bookItem.querySelector('p:nth-of-type(4)').innerText.replace('Status: ', '');
-    const synopsis = bookItem.querySelector('p:nth-of-type(5)').innerText.replace('Synopsis: ', '');
+    const title = bookItem.querySelector('h2').innerText;
+    const author = bookItem.querySelector('.details p:nth-of-type(1)').innerText.replace('Author: ', '');
+    const genre = bookItem.querySelector('.details p:nth-of-type(2)').innerText.replace('Genre: ', '');
+    const rating = bookItem.querySelector('.details p:nth-of-type(3)').innerText.replace('Rating: ', '').replace('/5', '');
+    const status = bookItem.querySelector('.details p:nth-of-type(4)').innerText.replace('Status: ', '');
+    const synopsis = bookItem.querySelector('.synopsis').innerText.replace('Synopsis: ', '');
+    const currentBookId = bookItem.dataset.bookId;
+    document.getElementById('edit-book-form').dataset.bookId = currentBookId;
 
     document.getElementById('edit-title').value = title;
     document.getElementById('edit-author').value = author;
@@ -127,6 +138,43 @@ function openEditBookDialog(button) {
     document.getElementById('edit-book').showModal();
 }
 
+// Add event listener for edit form submission
+document.getElementById('edit-book-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const bookId = event.target.dataset.bookId;
+    console.log('Editing book with ID:', bookId);
+    
+    const bookData = {
+        id: bookId,
+        title: formData.get('title'),
+        author: formData.get('author'),
+        genre: formData.get('genre'),
+        rating: parseFloat(formData.get('rating')),
+        status: formData.get('status'),
+        synopsis: formData.get('synopsis'),
+        image_url: formData.get('image') || 'https://covers.openlibrary.org/b/id/8236211-L.jpg'
+    };
+
+    console.log('Sending book data:', bookData);
+
+    try {
+        const response = await fetch(`/api/books/${bookId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(bookData)
+        });
+
+        if (!response.ok) throw new Error('Failed to update book');
+        
+        await fetchBooks();
+        document.getElementById('edit-book').close();
+        showToast('Book updated successfully!');
+    } catch (error) {
+        showToast(error.message, 'error');
+    }
+});
+
 function openAddBookDialog() {
     document.getElementById('add-book').showModal();
 }
@@ -139,56 +187,66 @@ function closeDialog(dialogId) {
 
 window.onload = initialize;
 
-const openBtnAdd = document.querySelectorAll(".sidebar p")[0];
-const openBtnPage = document.querySelectorAll(".sidebar p")[1];
-const openBtnCol = document.querySelectorAll(".sidebar p")[2];
+const openButtonAdd = document.querySelectorAll(".sidebar p")[0];
+const openButtonPage = document.querySelectorAll(".sidebar p")[1];
+const openButtonCol = document.querySelectorAll(".sidebar p")[2];
 
 const dialogCol = document.getElementsByClassName("dialog")[0];
 const dialogPage = document.getElementsByClassName("dialog")[1];
 const dialogAdd = document.getElementsByClassName("dialog")[2];
 
-const closeBtnCol = document.getElementsByClassName("close-btn")[0];
-const closeBtnPage = document.getElementsByClassName("close-btn")[1];
-const closeBtnAdd = document.getElementsByClassName("close-btn")[2];
+const closeButtonCol = document.getElementsByClassName("close-btn")[0];
+const closeButtonPage = document.getElementsByClassName("close-btn")[1];
+const closeButtonAdd = document.getElementsByClassName("close-btn")[2];
 
 const bookForm = document.querySelector('#add-book form');
 const pageForm = document.querySelector('#log-pages form'); // Properly declaring the pageForm variable
 
 // Add event listener for book submission
-bookForm.addEventListener('submit', async (event) => {
+document.querySelector('#add-book form').addEventListener('submit', async (event) => {
     event.preventDefault();
-    await submitBook(event);
-    document.getElementById('add-book').close();
-    await fetchBooks(); // Refresh the book list
-    showToast('Book added successfully!');
+    const formData = new FormData(event.target);
+    
+    // Validate required fields
+    const requiredFields = ['title', 'author', 'genre'];
+    for (const field of requiredFields) {
+        if (!formData.get(field)?.trim()) {
+            showToast(`${field.charAt(0).toUpperCase() + field.slice(1)} is required`, 'error');
+            return;
+        }
+    }
+    
+    const success = await submitBook(formData);
+    
+    if (success) {
+        document.getElementById('add-book').close();
+        event.target.reset();
+    }
 });
 
-openBtnAdd.addEventListener("click", () =>{
+openButtonAdd.addEventListener("click", () =>{
     dialogAdd.showModal();
 });
 
-closeBtnAdd.addEventListener("click", () => {
-
+closeButtonAdd.addEventListener("click", () => {
     bookForm.reset();
     dialogAdd.close();
 });
 
-openBtnCol.addEventListener("click", () =>{
+openButtonCol.addEventListener("click", () =>{
     dialogCol.showModal();
 });
 
-closeBtnCol.addEventListener("click", () => {
-
+closeButtonCol.addEventListener("click", () => {
     colForm.reset();
     dialogCol.close();
 });
 
-openBtnPage.addEventListener("click", () =>{
+openButtonPage.addEventListener("click", () =>{
     dialogPage.showModal();
 });
 
-closeBtnPage.addEventListener("click", () => {
-
+closeButtonPage.addEventListener("click", () => {
     pageForm.reset();
     dialogPage.close();
 });

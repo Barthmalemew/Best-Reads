@@ -25,6 +25,15 @@
         <option value="revert these changes" />
         <option value="im talking about the changes you just made" />
         <option value="make the log pages work, there is already a database named LOG fyi" />
+        <option value="now lets get the add book working, the book data base is called BOOKS" />
+        <option value="try again" />
+        <option value="the book isnt being added to the BOOKS database" />
+        <option value="it got an eror json unexpected dat" />
+        <option value="no book adding is whats not working" />
+        <option value="the add book is giving a json parse error" />
+        <option value="STILL GIVES A JSON PARESE ERROR" />
+        <option value="IT STILL GIVES A JSON ERROR" />
+        <option value="the book add is giving a json error" />
       </list>
     </option>
     <option name="selectedModel" value="codebuddy:CLAUDE_3.5_SONNET_V7" />

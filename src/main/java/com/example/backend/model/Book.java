@@ -10,7 +10,24 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
+    private String author;
+    
+    private String genre;
+    
+    @Column(columnDefinition = "DOUBLE DEFAULT 0")
+    private double rating = 0.0;
+    
+    @Column(columnDefinition = "TEXT")
+    private String synopsis;
+    
+    private String image_url;
+    
+    @Column(nullable = false)
+    private String status = "Not Started";
 
     public Long getId() {
         return id;
@@ -76,12 +93,17 @@ public class Book {
         this.status = status;
     }
 
-    private String author;
-    private String genre;
-    private double rating;
-    private String synopsis;
-    private String image_url;
-    private String status;
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", genre='" + genre + '\'' +
+                ", rating=" + rating +
+                ", status='" + status + '\'' +
+                '}';
+    }
 
     // Getters and setters
 }

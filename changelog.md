@@ -15,6 +15,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [ ] Write unit and integration tests
 - [ ] Prepare deployment scripts and documentation
 ---
+## [0.0.2] - 2024-11-10
+- add books form works and updates database
+- log pages read works and goes to log table
+- total pages read updates
+--- 
 ## [0.0.18] - 2024-11-02
 
 ### Added

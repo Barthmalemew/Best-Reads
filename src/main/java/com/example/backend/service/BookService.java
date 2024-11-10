@@ -20,6 +20,15 @@ public class BookService {
     }
 
     public Book addBook(Book book) {
+        System.out.println("BookService: Saving book: " + book.toString());
+        return bookRepository.save(book);
+    }
+
+    public boolean existsById(Long id) {
+        return bookRepository.existsById(id);
+    }
+
+    public Book updateBook(Book book) {
         return bookRepository.save(book);
     }
 }
