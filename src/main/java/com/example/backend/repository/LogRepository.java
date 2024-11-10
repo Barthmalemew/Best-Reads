@@ -11,4 +11,6 @@ public interface LogRepository extends JpaRepository<Log, Long> {
     @Query("SELECT SUM(pagesRead) FROM Log log")
     Integer getTotalPages();
 
+    @Query("SELECT COUNT(l) FROM Log l")
+    Long getLogCount();
 }

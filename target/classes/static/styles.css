@@ -1,29 +1,29 @@
 html, body {
-    font-family: Arial, sans-serif;
+    font-family: 'Nunito', sans-serif;
     display: flex;
     flex-direction: row;
     margin: 0;
     padding: 0;
     justify-content: space-between;
     height: 100%;
-    width: 100%;   
+    width: 100%;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
 }
 
 /* -------Sidebar styling------- */
 .sidebar {
-    background-color: #A5BAFF;
-    color: black;
+    background: linear-gradient(135deg, #34495e, #2c3e50);
+    color: white;
     width: 250px;
     height: 100%;
     min-height: 100%;
     box-sizing: border-box;
     padding: 20px;
-    position: sticky;   
-    top: 0 ;
-    /*border-radius: 0px 30px 30px 0px;*/
-    text-align: center;
-    outline: 6px double #FFE100;
-    outline-offset: -10px;
+    position: sticky;
+    top: 0;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.1);
 }
 
 .sidebar h1, .sidebar p {
@@ -31,7 +31,6 @@ html, body {
 }
 
 .sidebar h3{
-
     border-bottom: 2px solid #FFE100;
 }
 
@@ -46,7 +45,6 @@ html, body {
     overflow-y: auto;
     flex-grow: 1;
     background-image: radial-gradient(white ,90%,rgb(243, 243, 202));
-
 }
 
 /* -------Progress buttons------- */
@@ -86,13 +84,18 @@ hr {
 .book-item {
     background-color: white;
     display: flex;
-    width: 100%; /* Adjust width to fit the container */
-    border: 1px solid #ddd;
+    width: 100%; 
+    border: none;
     border-radius: 10px;
     padding: 10px;
-    box-shadow: 1px 10px 53px -16px rgba(0,0,0,0.24);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.book-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
 
 .book-item img {
     max-width: 100%;
@@ -180,7 +183,6 @@ hr {
 }
 
 ::backdrop {
-
     backdrop-filter: blur(5px);
 }
 

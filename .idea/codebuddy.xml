@@ -34,6 +34,8 @@
         <option value="STILL GIVES A JSON PARESE ERROR" />
         <option value="IT STILL GIVES A JSON ERROR" />
         <option value="the book add is giving a json error" />
+        <option value="lets see if we can get the averages pages functionality working" />
+        <option value="do you wanna make the fornt end look better?" />
       </list>
     </option>
     <option name="selectedModel" value="codebuddy:CLAUDE_3.5_SONNET_V7" />

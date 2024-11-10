@@ -49,9 +49,21 @@ async function fetchTotalPages() {
     }
 }
 
+async function fetchAveragePages() {
+    try {
+        const response = await fetch('/api/log/averagePages');
+        const data = await response.json();
+        document.getElementById('averagePages').innerText = `Average Pages: ${data}`;
+    } catch (error) {
+        console.error('Error fetching average pages:', error);
+        document.getElementById('averagePages').innerText = `Error fetching average pages`;
+    }
+}
+
 function initialize () {
     fetchBooks();
     fetchTotalPages();
+    fetchAveragePages();
 }
 
 async function submitBook(formData) {
@@ -238,7 +250,7 @@ openButtonCol.addEventListener("click", () =>{
 });
 
 closeButtonCol.addEventListener("click", () => {
-    colForm.reset();
+    bookForm.reset();
     dialogCol.close();
 });
 
@@ -273,6 +285,7 @@ pageForm.addEventListener('submit', async (event) => {
         if (!response.ok) throw new Error('Failed to log pages');
 
         await fetchTotalPages(); // Refresh the total pages display
+        await fetchAveragePages(); // Refresh the average pages display
         showToast('Pages logged successfully!');
         dialogPage.close();
     } catch (error) {

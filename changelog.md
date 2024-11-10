@@ -8,10 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## TODO
 
-- [ ] Set up the project structure
-- [ ] Develop RESTful APIs for book operations
-- [ ] Design and build the frontend interface
-- [ ] Connect the frontend with backend APIs
+- [X] Set up the project structure
+- [X] Develop RESTful APIs for book operations
+- [X] Design and build the frontend interface
+- [X] Connect the frontend with backend APIs
 - [ ] Write unit and integration tests
 - [ ] Prepare deployment scripts and documentation
 ---

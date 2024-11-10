@@ -31,4 +31,10 @@ public class LogController {
         Integer totalPages = logService.getTotalPages();
         return ResponseEntity.ok(totalPages != null ? totalPages : 0);
     }
+    
+    @GetMapping("/averagePages")
+    public ResponseEntity<Double> getAveragePages() {
+        Double averagePages = logService.getAveragePages();
+        return ResponseEntity.ok(averagePages);
+    }
 }
