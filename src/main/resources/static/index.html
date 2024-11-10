@@ -38,12 +38,12 @@
 <!----- Log Pages Dialog ----->
 <dialog id="log-pages" class="dialog">
     <div>
-        <form method="post">
+        <form id="log-pages-form" method="post">
             <label for="pages"> Pages: </label>
-            <input type="text" name="pages" required />
+            <input type="number" name="pages" required min="1" />
 
-            <label for="pages"> Date: </label>
-            <input type="date" name="pages" required />
+            <label for="date"> Date: </label>
+            <input type="date" name="date" required />
             <div>
                 <input type="submit" value="Submit" class="btn" />
                 <button type="button" class="close-btn" onclick="closeDialog('log-pages')">Close</button>

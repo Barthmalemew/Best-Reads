@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CodebuddyPersistentProjectState">
+    <option name="additionalOptionsVisible" value="true" />
+    <option name="autoFileSelection" value="true" />
+    <option name="promptHistory">
+      <list>
+        <option value="take a look at my project, is there anything out of place" />
+        <option value="could you see if theres anything wrong with my project" />
+        <option value="could you see whats wrong with my book logging functionality" />
+        <option value="could you look at my project and make suggestions" />
+        <option value="id like more etails on the book logging function to make it work " />
+        <option value="what should I do next in this project" />
+        <option value="what needs to be donw to further implement the log pages function" />
+        <option value="i already have a version of it implemented right??" />
+        <option value="check the endpoingts to make  sure they are all rigght" />
+        <option value="where does the logged pages go now?" />
+        <option value="the add book functionality isnt fully implemented" />
+        <option value="it says added but it doesnt gett\ added to the page" />
+        <option value="try look again, the form doesnt go away and it gives an error" />
+        <option value="try again and dont break my webpage " />
+        <option value="set up my book adding" />
+        <option value="lets add back in the log page functionality from earlier" />
+        <option value="implement the book logging functionality correctly" />
+        <option value="revert these changes" />
+        <option value="im talking about the changes you just made" />
+        <option value="make the log pages work, there is already a database named LOG fyi" />
+      </list>
+    </option>
+    <option name="selectedModel" value="codebuddy:CLAUDE_3.5_SONNET_V7" />
+    <option name="ttsEnabled" value="false" />
+  </component>
+</project>

@@ -44,7 +44,7 @@ async function fetchTotalPages() {
         const data = await response.json();
         document.getElementById('totalPages').innerText = `Total Pages Read: ${data}`;
     } catch (error) {
-        console.error('Error fetching totalPages:', error);
+        console.error('Error fetching total pages:', error);
         document.getElementById('totalPages').innerText = `Error fetching total pages. Please try again later.`;
     }
 }
@@ -54,7 +54,52 @@ function initialize () {
     fetchTotalPages();
 }
 
+async function submitBook(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
 
+    const bookData = {
+        title: formData.get('title'),
+        author: formData.get('author'),
+        genre: formData.get('genre'),
+        rating: parseFloat(formData.get('rating')),
+        status: formData.get('status'),
+        synopsis: formData.get('synopsis'),
+        image_url: formData.get('image')
+    };
+
+    try {
+        const response = await fetch('/api/books', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(bookData)
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to add book');
+        }
+        showToast('Book added successfully!');
+    } catch (error) {
+        showToast(error.message, 'error');
+    }
+}
+
+function showToast(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    // Show toast
+    setTimeout(() => toast.style.opacity = '1', 100);
+
+    // Hide and remove toast
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
 
 function openEditBookDialog(button) {
     const bookItem = button.closest('.book-item');
@@ -82,6 +127,15 @@ function openEditBookDialog(button) {
     document.getElementById('edit-book').showModal();
 }
 
+function openAddBookDialog() {
+    document.getElementById('add-book').showModal();
+}
+
+function closeDialog(dialogId) {
+    const dialog = document.getElementById(dialogId);
+    dialog.querySelector('form').reset();
+    dialog.close();
+}
 
 window.onload = initialize;
 
@@ -97,18 +151,25 @@ const closeBtnCol = document.getElementsByClassName("close-btn")[0];
 const closeBtnPage = document.getElementsByClassName("close-btn")[1];
 const closeBtnAdd = document.getElementsByClassName("close-btn")[2];
 
-const colForm = document.querySelectorAll("form")[0];
-const pageForm = document.querySelectorAll("form")[1];
-const AddForm = document.querySelectorAll("form")[2];
+const bookForm = document.querySelector('#add-book form');
+const pageForm = document.querySelector('#log-pages form'); // Properly declaring the pageForm variable
 
+// Add event listener for book submission
+bookForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    await submitBook(event);
+    document.getElementById('add-book').close();
+    await fetchBooks(); // Refresh the book list
+    showToast('Book added successfully!');
+});
 
 openBtnAdd.addEventListener("click", () =>{
     dialogAdd.showModal();
 });
 
 closeBtnAdd.addEventListener("click", () => {
-    
-    AddForm.reset();
+
+    bookForm.reset();
     dialogAdd.close();
 });
 
@@ -130,4 +191,33 @@ closeBtnPage.addEventListener("click", () => {
 
     pageForm.reset();
     dialogPage.close();
+});
+
+// Add event listener for log pages submission
+pageForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const dateValue = formData.get('date'); // Properly formatting the date
+
+    const logData = {
+        pagesRead: parseInt(formData.get('pages')),
+        dateRead: dateValue.split('-').join('-'), // Ensure proper date format
+        minutesRead: 0  // Optional field for now
+    };
+
+    try {
+        const response = await fetch('/api/log', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(logData)
+        });
+
+        if (!response.ok) throw new Error('Failed to log pages');
+
+        await fetchTotalPages(); // Refresh the total pages display
+        showToast('Pages logged successfully!');
+        dialogPage.close();
+    } catch (error) {
+        showToast(error.message, 'error');
+    }
 });

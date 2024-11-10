@@ -1039,3 +1039,36 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
 	... 94 more
+2024-11-10 10:41:17.310739-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * [*]:Log"; SQL statement:
+select * :Log [42000-224]
+2024-11-10 10:41:33.833661-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * [*]Log"; SQL statement:
+select * Log [42000-224]
+2024-11-10 10:41:34.552447-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * [*]Log"; SQL statement:
+select * Log [42000-224]
+2024-11-10 10:41:43.006863-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * [*]log"; SQL statement:
+select * log [42000-224]
+2024-11-10 10:41:47.523683-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * [*]log"; SQL statement:
+select * log [42000-224]
+2024-11-10 10:41:55.279074-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * [*]Log"; SQL statement:
+select * Log [42000-224]
+2024-11-10 10:41:55.800639-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * [*]Log"; SQL statement:
+select * Log [42000-224]
+2024-11-10 10:42:13.103351-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * [*]Log"; SQL statement:
+select * Log [42000-224]
+2024-11-10 10:42:33.280859-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * [*]pages_log"; SQL statement:
+select * pages_log [42000-224]
+2024-11-10 10:42:45.827287-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * [*]READING_Log"; SQL statement:
+select * READING_Log [42000-224]
+2024-11-10 10:42:51.133583-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * [*]READING_LOG"; SQL statement:
+select * READING_LOG [42000-224]

@@ -17,8 +17,13 @@ public class LogController {
     }
 
     @PostMapping
-    public Log saveLog(Log log){
-       return logService.save(log);
+    public ResponseEntity<Log> saveLog(@RequestBody Log log) {
+        if (log.getPagesRead() <= 0) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        
+        Log savedLog = logService.save(log);
+        return ResponseEntity.ok(savedLog);
     }
 
     @GetMapping("/totalPages")
