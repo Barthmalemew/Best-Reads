@@ -16,6 +16,7 @@ async function fetchBooks() {
                 <div class="img-edit-btn">
                     <img src="${book.image_url ? book.image_url : 'https://covers.openlibrary.org/b/id/8236211-L.jpg'}" alt="Book cover">
                     <button class="btn" onclick="openEditBookDialog(this)">Edit</button>
+                    <button class="btn delete-btn" onclick="deleteBook(${book.id})">Delete</button>
                 </div>
 
                 <div class="details">
@@ -58,6 +59,26 @@ async function fetchAveragePages() {
         console.error('Error fetching average pages:', error);
         document.getElementById('averagePages').innerText = `Error fetching average pages`;
     }
+}
+
+async function searchBooks() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const bookList = document.getElementById('bookList');
+    const books = Array.from(bookList.getElementsByClassName('book-item'));
+
+    books.forEach(book => {
+        const title = book.querySelector('h2').textContent.toLowerCase();
+        const author = book.querySelector('.details p:nth-of-type(1)').textContent.toLowerCase();
+        const genre = book.querySelector('.details p:nth-of-type(2)').textContent.toLowerCase();
+
+        if (title.includes(searchTerm) || 
+            author.includes(searchTerm) || 
+            genre.includes(searchTerm)) {
+            book.style.display = '';
+        } else {
+            book.style.display = 'none';
+        }
+    });
 }
 
 function initialize () {
@@ -103,6 +124,25 @@ async function submitBook(formData) {
         console.error('Error submitting book:', error);
         showToast(error.message, 'error');
         return false;
+    }
+}
+
+async function deleteBook(id) {
+    if (!confirm('Are you sure you want to delete this book?')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/books/${id}`, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) throw new Error('Failed to delete book');
+
+        await fetchBooks();
+        showToast('Book deleted successfully!');
+    } catch (error) {
+        showToast(error.message, 'error');
     }
 }
 

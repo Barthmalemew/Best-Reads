@@ -31,4 +31,12 @@ public class BookService {
     public Book updateBook(Book book) {
         return bookRepository.save(book);
     }
+
+    public boolean deleteBook(Long id) {
+        if (bookRepository.existsById(id)) {
+            bookRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

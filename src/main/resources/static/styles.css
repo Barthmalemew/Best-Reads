@@ -12,6 +12,34 @@ html, body {
     line-height: 1.6;
 }
 
+.search-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+    margin-bottom: 30px;
+}
+
+.search-container input {
+    padding: 8px 15px;
+    border: 2px solid #34495e;
+    border-radius: 20px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.search-container button {
+    background: #34495e;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
 /* -------Sidebar styling------- */
 .sidebar {
     background: linear-gradient(135deg, #34495e, #2c3e50);
@@ -42,6 +70,7 @@ html, body {
 /* -------Main content area------- */
 .content {
     padding: 30px;
+    padding-top: 80px;  /* Add extra padding at the top to account for search bar */
     overflow-y: auto;
     flex-grow: 1;
     background-image: radial-gradient(white ,90%,rgb(243, 243, 202));
