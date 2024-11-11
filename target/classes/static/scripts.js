@@ -39,6 +39,30 @@ async function fetchBooks() {
     }
 }
 
+async function fetchCollections(){
+    try{
+        const response = await fetch('api/collection');
+        const collections = await response.json();
+
+        const collectionList = document.getElementById("collectionList");
+
+        collectionList.innerHTML = '';
+
+        collections.forEach(collection => {
+            const collectionItem = document.createElement('p');
+
+            collectionItem.innerHTML = `${collection.name}`;
+
+            collectionList.appendChild(collectionItem);
+        })
+
+    }
+    catch (error)
+    {
+        console.error('Error fetching collections:', error);
+    }
+}
+
 async function fetchTotalPages() {
     try {
         const response = await fetch('/api/log/totalPages');
@@ -85,6 +109,7 @@ function initialize () {
     fetchBooks();
     fetchTotalPages();
     fetchAveragePages();
+    fetchCollections();
 }
 
 async function submitBook(formData) {
@@ -275,6 +300,11 @@ document.querySelector('#add-book form').addEventListener('submit', async (event
         event.target.reset();
     }
 });
+
+document.querySelector('#add-col form').addEventListener('submit', async (event) =>{
+
+
+})
 
 openButtonAdd.addEventListener("click", () =>{
     dialogAdd.showModal();
