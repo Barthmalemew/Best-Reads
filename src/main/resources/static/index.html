@@ -11,11 +11,7 @@
 </head>
 <body>
 
-<!-- Search Container -->
-<div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search books...">
-    <button onclick="searchBooks()"><i class="fas fa-search"></i></button>
-</div>
+
 
 <!-- Sidebar -->
 <div class="sidebar">
@@ -28,6 +24,7 @@
         Collection 1
     </div>
 </div>
+
 
 <!----- Add Collection Dialog ----->
 <dialog id="add-col" class="dialog">
@@ -128,6 +125,14 @@
 
 <!-- Main content -->
 <div class="content">
+
+    
+<!-- Search Container -->
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search books...">
+    <button onclick="searchBooks()"><i class="fas fa-search"></i></button>
+</div>
+
     <div class="progress-bar">
         <div class="circle" id="totalPages"></div>
         <div class="circle">Favorite Genre</div>

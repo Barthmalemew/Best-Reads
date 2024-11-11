@@ -169,7 +169,7 @@ function openEditBookDialog(button) {
     const genre = bookItem.querySelector('.details p:nth-of-type(2)').innerText.replace('Genre: ', '');
     const rating = bookItem.querySelector('.details p:nth-of-type(3)').innerText.replace('Rating: ', '').replace('/5', '');
     const status = bookItem.querySelector('.details p:nth-of-type(4)').innerText.replace('Status: ', '');
-    const synopsis = bookItem.querySelector('.synopsis').innerText.replace('Synopsis: ', '');
+    const synopsis = bookItem.querySelector('.synopsis').innerText.replace('Synopsis:', '');
     const currentBookId = bookItem.dataset.bookId;
     document.getElementById('edit-book-form').dataset.bookId = currentBookId;
 

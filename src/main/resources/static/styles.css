@@ -13,13 +13,13 @@ html, body {
 }
 
 .search-container {
-    position: fixed;
     top: 20px;
     right: 20px;
     display: flex;
     gap: 10px;
     z-index: 100;
     margin-bottom: 30px;
+    justify-content: right;
 }
 
 .search-container input {
@@ -70,7 +70,6 @@ html, body {
 /* -------Main content area------- */
 .content {
     padding: 30px;
-    padding-top: 80px;  /* Add extra padding at the top to account for search bar */
     overflow-y: auto;
     flex-grow: 1;
     background-image: radial-gradient(white ,90%,rgb(243, 243, 202));
