@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.model.Book;
 import com.example.backend.model.Collection;
 import com.example.backend.service.CollectionService;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,17 @@ public class CollectionController {
     @GetMapping
     public List<Collection> getAllCollection() {
         return collectionService.getAllCollections();
+    }
+
+    @PostMapping
+    public ResponseEntity<Collection> addBook(@RequestBody Collection collection) {
+            try{
+               Collection colSaved = collectionService.addCollection(collection); 
+               return ResponseEntity.ok(colSaved);
+            }
+            catch (Exception e) {
+                return ResponseEntity.internalServerError().build();
+            }
     }
 
 

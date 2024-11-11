@@ -152,6 +152,37 @@ async function submitBook(formData) {
     }
 }
 
+async function submitCollection(formData)
+{
+    const collectionData = {
+        name: formData.get("collection")
+    };
+
+    try{
+        const response = await fetch('api/collection',{
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(collectionData)
+        });
+
+        const responseData = await response.json();
+        if (!response.ok) {
+            throw new Error(responseData.message || 'Failed to add book');
+        }
+
+        await fetchBooks();
+        await fetchCollections();
+
+        showToast('Collection added successfully!');
+        return true;
+    } catch (error) {
+        console.error('Error submitting collection:', error);
+        showToast(error.message, 'error');
+        return false;
+    }
+    
+}
+
 async function deleteBook(id) {
     if (!confirm('Are you sure you want to delete this book?')) {
         return;
@@ -256,6 +287,11 @@ function openAddBookDialog() {
     document.getElementById('add-book').showModal();
 }
 
+function openAddCollectionDialog()
+{
+    document.getElementById('add-col').showModal();
+}
+
 function closeDialog(dialogId) {
     const dialog = document.getElementById(dialogId);
     dialog.querySelector('form').reset();
@@ -302,9 +338,17 @@ document.querySelector('#add-book form').addEventListener('submit', async (event
 });
 
 document.querySelector('#add-col form').addEventListener('submit', async (event) =>{
+    event.preventDefault();
+    const formData = new FormData(event.target);
 
+    const success = await submitCollection(formData);
 
-})
+    if (success) {
+        document.getElementById('add-col').close();
+        event.target.reset();
+    }
+
+});
 
 openButtonAdd.addEventListener("click", () =>{
     dialogAdd.showModal();

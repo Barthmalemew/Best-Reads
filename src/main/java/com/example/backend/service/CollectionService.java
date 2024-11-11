@@ -20,4 +20,9 @@ public class CollectionService {
         return collectionRepository.findAll();
     }
 
+    public Collection addCollection(Collection collection)
+    {
+        return collectionRepository.save(collection);
+    }
+
 }
