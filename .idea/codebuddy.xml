@@ -41,6 +41,7 @@
         <option value="great now lets see if we can make things more symetircal and make sure the text inside the circles isnt right againt the border" />
         <option value="nice now lets get the search bar tto take the whole width of the progrss section" />
         <option value="cool, maybe we can make the cricles rounded squares " />
+        <option value="make a git ignore file to hide the codebuddy file" />
       </list>
     </option>
     <option name="selectedModel" value="codebuddy:CLAUDE_3.5_SONNET_V7" />
