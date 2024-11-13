@@ -1,0 +1,65 @@
+# Codebuddy files
+.codebuddy
+.codebuddy/
+codebuddy.json
+codebuddy.config
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (Java 2 Platform, Micro Edition)
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs
+hs_err_pid*
+replay_pid*
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Integrated Development Environment-specific files
+.idea/
+*.iml
+*.iws
+.idea_modules/
+.classpath
+.project
+.settings/
+.vscode/
+
+# Operating System-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Application specific
+data/
+*.mv.db
+*.trace.db

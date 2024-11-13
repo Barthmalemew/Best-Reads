@@ -101,7 +101,7 @@
             <label for="edit-genre"> Genre: </label>
             <input type="text" id="edit-genre" name="genre" required/>
             <label for="edit-rating"> Rating: </label>
-            <input type="number" id="edit-rating" name="rating" name="rating" max="5" min="0" step="0.1"/>
+            <input type="number" id="edit-rating" name="rating" max="5" min="0" step="0.1"/>
             <fieldset>
                 <legend>Status</legend>
                 <label for="edit-status"> Not Started: </label>
@@ -126,18 +126,17 @@
 <!-- Main content -->
 <div class="content">
 
-    
-<!-- Search Container -->
-<div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search books...">
-    <button onclick="searchBooks()"><i class="fas fa-search"></i></button>
-</div>
-
     <div class="progress-bar">
         <div class="circle" id="totalPages"></div>
         <div class="circle">Favorite Genre</div>
         <div class="circle" id="averagePages">Average Pages Read</div>
         <div class="circle">Longest Pages</div>
+    </div>
+
+    <!-- Search Container -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search books...">
+        <button onclick="searchBooks()"><i class="fas fa-search"></i></button>
     </div>
 
     <hr>

@@ -37,6 +37,10 @@
         <option value="lets see if we can get the averages pages functionality working" />
         <option value="do you wanna make the fornt end look better?" />
         <option value="I love it, lets do some more while keeping what was just done" />
+        <option value="I want the search bar to be placed between the progress bar elements and the form" />
+        <option value="great now lets see if we can make things more symetircal and make sure the text inside the circles isnt right againt the border" />
+        <option value="nice now lets get the search bar tto take the whole width of the progrss section" />
+        <option value="cool, maybe we can make the cricles rounded squares " />
       </list>
     </option>
     <option name="selectedModel" value="codebuddy:CLAUDE_3.5_SONNET_V7" />
