@@ -297,8 +297,9 @@ document.getElementById('edit-book-form').addEventListener('submit', async (even
 
     const collection = formData.get('collection').split(' ');
 
+
     const collectionData = {
-        id: collection[0] == 0 ? null : collection[0],
+        id: collection[0],
         name: collection[1]
     }
     
@@ -311,7 +312,7 @@ document.getElementById('edit-book-form').addEventListener('submit', async (even
         rating: parseFloat(formData.get('rating')),
         status: formData.get('status'),
         synopsis: formData.get('synopsis'),
-        collection: collectionData,
+        collection: collectionData.id == 0 ? null: collectionData,
         image_url: formData.get('image') || 'https://covers.openlibrary.org/b/id/8236211-L.jpg'
     };
 
