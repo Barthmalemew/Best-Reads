@@ -11,6 +11,10 @@ async function fetchBooks() {
             bookItem.classList.add('book-item');
             bookItem.classList.add('BookCardPop');
             bookItem.dataset.bookId = book.id; // Add data attribute for book ID
+            if (book.collection)
+            {
+             bookItem.dataset.collectionId = book.collection.id;
+            }
 
             bookItem.innerHTML = `
                 <div class="img-edit-btn">
@@ -39,6 +43,50 @@ async function fetchBooks() {
     }
 }
 
+async function fetchCollections(){
+    try{
+        const response = await fetch('api/collection');
+        const collections = await response.json();
+
+        const collectionList = document.getElementById("collectionList");
+        const collectionDrop1 = document.getElementsByClassName("col-drop")[0];
+        const collectionDrop2 = document.getElementsByClassName("col-drop")[1];
+
+
+        collectionList.innerHTML = '';
+        collectionDrop1.innerHTML = "<option value = '0'> </option>";
+        collectionDrop2.innerHTML = "<option value = '0'></option>"
+
+        collections.forEach(collection => {
+            const collectionItem = document.createElement('p');
+            const collectionOpt1 = document.createElement('option');
+            const collectionOpt2 = document.createElement('option');
+
+
+            collectionOpt1.value = collection.id;
+            collectionOpt1.innerHTML = `${collection.name}`;
+            collectionOpt2.value = collection.id + " " + collection.name;
+            collectionOpt2.innerHTML = `${collection.name}`;
+
+            collectionItem.innerHTML = `${collection.name}`;
+            collectionItem.dataset.collectionId = collection.id;
+            collectionItem.onclick = function() {searchCollection(collection.id)};
+
+            collectionList.appendChild(collectionItem);
+            collectionDrop1.appendChild(collectionOpt1);
+            collectionDrop2.appendChild(collectionOpt2);
+
+        });
+
+
+
+    }
+    catch (error)
+    {
+        console.error('Error fetching collections:', error);
+    }
+}
+
 async function fetchTotalPages() {
     try {
         const response = await fetch('/api/log/totalPages');
@@ -61,6 +109,13 @@ async function fetchAveragePages() {
     }
 }
 
+function initialize () {
+    fetchBooks();
+    fetchTotalPages();
+    fetchAveragePages();
+    fetchCollections();
+}
+
 async function searchBooks() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     const bookList = document.getElementById('bookList');
@@ -81,10 +136,21 @@ async function searchBooks() {
     });
 }
 
-function initialize () {
-    fetchBooks();
-    fetchTotalPages();
-    fetchAveragePages();
+async function searchCollection(collectionId) {
+    const bookList = document.getElementById('bookList');
+    const books = Array.from(bookList.getElementsByClassName('book-item'));
+
+    
+    books.forEach(book => {
+
+        if (book.dataset.collectionId == collectionId) {
+            book.style.display = '';
+        } else {
+            book.style.display = 'none';
+        }
+    });
+
+    
 }
 
 async function submitBook(formData) {
@@ -96,6 +162,7 @@ async function submitBook(formData) {
         rating: formData.get('rating') ? parseFloat(formData.get('rating')) : 0,
         status: formData.get('status'),
         synopsis: formData.get('synopsis') || '',
+        collection: formData.get('collection')==0 ? null : formData.get('collection'),
         image_url: formData.get('image') || 'https://covers.openlibrary.org/b/id/8236211-L.jpg'
     };
     
@@ -125,6 +192,37 @@ async function submitBook(formData) {
         showToast(error.message, 'error');
         return false;
     }
+}
+
+async function submitCollection(formData)
+{
+    const collectionData = {
+        name: formData.get("collection")
+    };
+
+    try{
+        const response = await fetch('api/collection',{
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(collectionData)
+        });
+
+        const responseData = await response.json();
+        if (!response.ok) {
+            throw new Error(responseData.message || 'Failed to add book');
+        }
+
+        await fetchBooks();
+        await fetchCollections();
+
+        showToast('Collection added successfully!');
+        return true;
+    } catch (error) {
+        console.error('Error submitting collection:', error);
+        showToast(error.message, 'error');
+        return false;
+    }
+    
 }
 
 async function deleteBook(id) {
@@ -196,7 +294,16 @@ document.getElementById('edit-book-form').addEventListener('submit', async (even
     const formData = new FormData(event.target);
     const bookId = event.target.dataset.bookId;
     console.log('Editing book with ID:', bookId);
+
+    const collection = formData.get('collection').split(' ');
+
+
+    const collectionData = {
+        id: collection[0],
+        name: collection[1]
+    }
     
+
     const bookData = {
         id: bookId,
         title: formData.get('title'),
@@ -205,6 +312,7 @@ document.getElementById('edit-book-form').addEventListener('submit', async (even
         rating: parseFloat(formData.get('rating')),
         status: formData.get('status'),
         synopsis: formData.get('synopsis'),
+        collection: collectionData.id == 0 ? null: collectionData,
         image_url: formData.get('image') || 'https://covers.openlibrary.org/b/id/8236211-L.jpg'
     };
 
@@ -229,6 +337,11 @@ document.getElementById('edit-book-form').addEventListener('submit', async (even
 
 function openAddBookDialog() {
     document.getElementById('add-book').showModal();
+}
+
+function openAddCollectionDialog()
+{
+    document.getElementById('add-col').showModal();
 }
 
 function closeDialog(dialogId) {
@@ -274,6 +387,19 @@ document.querySelector('#add-book form').addEventListener('submit', async (event
         document.getElementById('add-book').close();
         event.target.reset();
     }
+});
+
+document.querySelector('#add-col form').addEventListener('submit', async (event) =>{
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    const success = await submitCollection(formData);
+
+    if (success) {
+        document.getElementById('add-col').close();
+        event.target.reset();
+    }
+
 });
 
 openButtonAdd.addEventListener("click", () =>{

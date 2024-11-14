@@ -1,5 +1,6 @@
 package com.example.backend.model;
 
+import com.example.backend.model.Collection;
 import jakarta.persistence.*;
 
 @Entity
@@ -28,6 +29,10 @@ public class Book {
     
     @Column(nullable = false)
     private String status = "Not Started";
+
+    @ManyToOne
+    @JoinColumn(name="COLLECTIONID", nullable = true)
+    private Collection collection;
 
     public Long getId() {
         return id;
@@ -93,6 +98,14 @@ public class Book {
         this.status = status;
     }
 
+    public Collection getCollection(){
+        return collection;
+    }
+
+    public void setCollectionId(Collection collection){
+        this.collection = collection;
+    }
+    
     @Override
     public String toString() {
         return "Book{" +
@@ -102,6 +115,7 @@ public class Book {
                 ", genre='" + genre + '\'' +
                 ", rating=" + rating +
                 ", status='" + status + '\'' +
+                ", collectionId='" + collection + '\'' +
                 '}';
     }
 

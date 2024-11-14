@@ -20,7 +20,7 @@
     <p onclick="openLogPagesDialog()"><i class="fas fa-book-reader"></i> Log Pages</p>
     <p onclick="openAddCollectionDialog()"><i class="fas fa-folder-plus"></i> Add Collection</p>
     <h3>Collections</h3>
-    <div>
+    <div id="collectionList">
         Collection 1
     </div>
 </div>
@@ -65,8 +65,17 @@
             <input type="text" name="title" required/>
             <label for="author"> Author: </label>
             <input type="text" name="author" required/>
-            <label for="genre"> Genre: </label>
-            <input type="text" name="genre" required/>
+            <label for="genre">Genre:</label>
+            <select name="genre">
+                <option value="fantasy">Fantasy</option>
+                <option value="action">Action</option>
+                <option value="adventure">Adventure</option>
+                <option value="comedy">Comedy</option>
+                <option value="mystery">Mystery</option>
+                <option value="historical">Historical</option>
+                <option value="horror">Horror</option>
+                <option value="romance">Romance</option>
+            </select>
             <label for="rating"> Rating: </label>
             <input type="number" name="rating" max="5" min="0" step="0.1"/>
             <fieldset>
@@ -80,6 +89,11 @@
             </fieldset>
             <label for="synopsis"> Synopsis: </label>
             <input type="text" name="synopsis" required/>
+            <label for="collection">Collection:</label>
+            <select name="collection" class="col-drop">
+                <option value = '0'></option>
+                
+            </select>
             <label for="image" > Image: </label>
             <input type="url" placeholder="https://example.com" name="image" />
             <div>
@@ -113,6 +127,11 @@
             </fieldset>
             <label for="edit-synopsis"> Synopsis: </label>
             <input type="text" id="edit-synopsis" name="synopsis" required/>
+            <label for="collection">Collection:</label>
+            <select name="collection" class="col-drop">
+                <option value = '0'></option>
+
+            </select>
             <label for="edit-image"> Image: </label>
             <input type="url" id="edit-image" placeholder="https://example.com" name="image" />
             <div>
