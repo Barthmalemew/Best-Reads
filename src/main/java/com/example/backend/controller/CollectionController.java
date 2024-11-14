@@ -24,7 +24,7 @@ public class CollectionController {
     }
 
     @PostMapping
-    public ResponseEntity<Collection> addBook(@RequestBody Collection collection) {
+    public ResponseEntity<Collection> addCollection(@RequestBody Collection collection) {
             try{
                Collection colSaved = collectionService.addCollection(collection); 
                return ResponseEntity.ok(colSaved);
