@@ -128,4 +128,15 @@ public class BookController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/favorite-genre")
+    public ResponseEntity<String> getFavoriteGenre() {
+        try {
+            String favoriteGenre = bookService.getFavoriteGenre();
+            return ResponseEntity.ok(favoriteGenre);
+        } catch (Exception e) {
+            logger.error("Error getting favorite genre: ", e);
+            return ResponseEntity.internalServerError().body("Error getting favorite genre");
+        }
+    }
 }

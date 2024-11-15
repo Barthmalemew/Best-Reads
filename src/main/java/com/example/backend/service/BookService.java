@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService {
@@ -61,5 +63,28 @@ public class BookService {
             return true;
         }
         return false;
+    }
+
+    public String getFavoriteGenre() {
+        List<Book> books = getAllBooks();
+        if (books.isEmpty()) {
+            return "No books available";
+        }
+
+        Map<String, Long> genreCounts = books.stream()
+            .filter(book -> book.getGenre() != null && !book.getGenre().trim().isEmpty())
+            .collect(Collectors.groupingBy(
+                Book::getGenre,
+                Collectors.counting()
+            ));
+
+        if (genreCounts.isEmpty()) {
+            return "No genres found";
+        }
+
+        return genreCounts.entrySet().stream()
+            .max(Map.Entry.comparingByValue())
+            .map(Map.Entry::getKey)
+            .orElse("Unknown");
     }
 }

@@ -61,6 +61,18 @@ async function fetchAveragePages() {
     }
 }
 
+async function fetchFavoriteGenre() {
+    try {
+        const response = await fetch('/api/books/favorite-genre');
+        const data = await response.text();
+        const favoriteGenreElement = document.querySelector('.circle:nth-child(2)');
+        favoriteGenreElement.innerText = `Favorite Genre: ${data}`;
+    } catch (error) {
+        console.error('Error fetching favorite genre:', error);
+        document.querySelector('.circle:nth-child(2)').innerText = 'Error fetching genre';
+    }
+}
+
 async function searchBooks() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     if (!searchTerm.trim()) return; // Don't search if input is empty
@@ -139,6 +151,7 @@ async function addGoogleBook(googleBook) {
         }
         
         await fetchBooks();
+        await fetchFavoriteGenre();
         showToast('Book added successfully!', 'success');
         document.getElementById('add-book').close();
     } catch (error) {
@@ -164,6 +177,7 @@ function toggleManualEntry() {
 function initialize () {
     fetchBooks();
     fetchTotalPages();
+    fetchFavoriteGenre();
     fetchAveragePages();
 }
 
@@ -219,6 +233,7 @@ async function submitBook(formData) {
             throw new Error(responseData.message || 'Failed to add book');
         }
         await fetchBooks();
+        await fetchFavoriteGenre();
         showToast('Book added successfully!');
         return true;
     } catch (error) {
@@ -241,6 +256,7 @@ async function deleteBook(id) {
         if (!response.ok) throw new Error('Failed to delete book');
 
         await fetchBooks();
+        await fetchFavoriteGenre();
         showToast('Book deleted successfully!');
     } catch (error) {
         showToast(error.message, 'error');
@@ -321,6 +337,7 @@ document.getElementById('edit-book-form').addEventListener('submit', async (even
         if (!response.ok) throw new Error('Failed to update book');
         
         await fetchBooks();
+        await fetchFavoriteGenre();
         document.getElementById('edit-book').close();
         showToast('Book updated successfully!');
     } catch (error) {

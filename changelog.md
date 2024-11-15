@@ -15,15 +15,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [ ] Write unit and integration tests
 - [ ] Prepare deployment scripts and documentation
 ---
+
+## [0.2.1] - 2024-14-10
+
+### added
+- favorite genre updates based on collection
+
 ## [0.2.0] - 2024-14-10
+
+### added
 - added google book api for easier book search
 - made search bars more suer friendly
 
+
 ## [0.0.2] - 2024-11-10
+
+### added
 - add books form works and updates database
 - log pages read works and goes to log table
 - total pages read updates
---- 
+ 
 ## [0.0.18] - 2024-11-02
 
 ### Added
@@ -32,7 +43,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Favorite Genre button haas been implemented and works
 - Longest Pages button as been implemented and works
 - Edit button is supposed to be working but I have problems with it but it has been implemented into the code
----
+
 ## [0.0.17] - 2024-11-01
 
 ### Added
