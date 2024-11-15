@@ -20,7 +20,7 @@
     <p onclick="openLogPagesDialog()"><i class="fas fa-book-reader"></i> Log Pages</p>
     <p onclick="openAddCollectionDialog()"><i class="fas fa-folder-plus"></i> Add Collection</p>
     <h3>Collections</h3>
-    <div id="collectionList">
+    <div>
         Collection 1
     </div>
 </div>
@@ -61,43 +61,13 @@
 <dialog id="add-book" class="dialog">
     <div>
         <form>
-            <label for="title"> Title: </label>
-            <input type="text" name="title" required/>
-            <label for="author"> Author: </label>
-            <input type="text" name="author" required/>
-            <label for="genre">Genre:</label>
-            <select name="genre">
-                <option value="fantasy">Fantasy</option>
-                <option value="action">Action</option>
-                <option value="adventure">Adventure</option>
-                <option value="comedy">Comedy</option>
-                <option value="mystery">Mystery</option>
-                <option value="historical">Historical</option>
-                <option value="horror">Horror</option>
-                <option value="romance">Romance</option>
-            </select>
-            <label for="rating"> Rating: </label>
-            <input type="number" name="rating" max="5" min="0" step="0.1"/>
-            <fieldset>
-                <legend>Status</legend>
-                <label for="status"> Not Started: </label>
-                <input type="radio" name="status" value="Not Started" checked />
-                <label for="status"> In Progress: </label>
-                <input type="radio" name="status" value="In Progress"/>
-                <label for="status"> Complete: </label>
-                <input type="radio" name="status" value="Completed" />
-            </fieldset>
-            <label for="synopsis"> Synopsis: </label>
-            <input type="text" name="synopsis" required/>
-            <label for="collection">Collection:</label>
-            <select name="collection" class="col-drop">
-                <option value = '0'></option>
-                
-            </select>
-            <label for="image" > Image: </label>
-            <input type="url" placeholder="https://example.com" name="image" />
+            <div class="search-box">
+                <p>Search for a book by title, author, or ISBN</p>
+                <input type="text" id="bookSearch" placeholder="Search for a book...">
+                <button type="button" onclick="searchGoogleBooks(document.getElementById('bookSearch').value)">Search</button>
+            </div>
+            <div id="searchResults" class="search-results"></div>
             <div>
-                <input type="submit" value="Submit" class="btn" />
                 <button type="button" class="close-btn" onclick="closeDialog('add-book')">Close</button>
             </div>
         </form>
@@ -127,11 +97,6 @@
             </fieldset>
             <label for="edit-synopsis"> Synopsis: </label>
             <input type="text" id="edit-synopsis" name="synopsis" required/>
-            <label for="collection">Collection:</label>
-            <select name="collection" class="col-drop">
-                <option value = '0'></option>
-
-            </select>
             <label for="edit-image"> Image: </label>
             <input type="url" id="edit-image" placeholder="https://example.com" name="image" />
             <div>

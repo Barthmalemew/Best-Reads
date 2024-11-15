@@ -271,6 +271,59 @@ hr {
     background-color: #f44336;
 }
 
+.search-results {
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 15px 0;
+    background: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-results .loading,
+.search-results .error {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.search-results .error {
+    color: #f44336;
+}
+
+.preview-synopsis {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.search-result {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    gap: 10px;
+}
+
+.search-result img {
+    width: 50px;
+    height: 75px;
+    object-fit: cover;
+}
+
+.search-result .book-info {
+    flex: 1;
+}
+
+.search-result button {
+    padding: 5px 10px;
+    background-color: #34495e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 900px){
     .book-item{
         flex-direction: column;

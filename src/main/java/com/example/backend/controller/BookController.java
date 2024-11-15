@@ -1,7 +1,12 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.GoogleBookDTO;
+import com.example.backend.dto.ErrorResponse;
 import com.example.backend.model.Book;
 import com.example.backend.service.BookService;
+import com.example.backend.service.GoogleBooksService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +17,50 @@ import java.util.List;
 public class BookController {
 
     private final BookService bookService;
+    private final GoogleBooksService googleBooksService;
+    private final Logger logger = LoggerFactory.getLogger(BookController.class);
 
-    public BookController(BookService bookService) {
+    public BookController(BookService bookService, GoogleBooksService googleBooksService) {
         this.bookService = bookService;
+        this.googleBooksService = googleBooksService;
+    }
+    
+    @GetMapping("/search")
+    public ResponseEntity<?> searchBooks(@RequestParam String query) {
+        try {
+            String trimmedQuery = query != null ? query.trim() : "";
+            if (trimmedQuery.isEmpty()) {
+                return ResponseEntity.badRequest()
+                    .body(new ErrorResponse("Search query cannot be empty"));
+            }
+            return ResponseEntity.ok(googleBooksService.searchBooks(trimmedQuery));
+        } catch (Exception e) {
+            logger.error("Error searching books: ", e);
+            return ResponseEntity.internalServerError()
+                .body(new ErrorResponse("Error searching books: " + 
+                    e.getMessage()));
+        }
+    }
+    
+    @PostMapping("/google-book")
+    public ResponseEntity<?> addGoogleBook(@RequestBody GoogleBookDTO googleBook) {
+        try {
+            if (googleBook == null || googleBook.getVolumeInfo() == null) {
+                return ResponseEntity.badRequest()
+                    .body(new ErrorResponse("Invalid book data received"));
+            }
+            
+            logger.info("Attempting to add Google book: {}", googleBook.getVolumeInfo().getTitle());
+            Book book = googleBook.toBook();
+            logger.debug("Converted GoogleBookDTO to Book: {}", book);
+            Book savedBook = bookService.addBook(book);
+            logger.info("Successfully added book with ID: {}", savedBook.getId());
+            return ResponseEntity.ok(savedBook);
+        } catch (Exception e) {
+            logger.error("Failed to add Google book: ", e);
+            return ResponseEntity.badRequest()
+                .body(new ErrorResponse("Failed to add book: " + e.getMessage()));
+        }
     }
 
     @PostMapping

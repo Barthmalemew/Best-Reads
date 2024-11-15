@@ -11,19 +11,20 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String author;
     
+    @Column(columnDefinition = "CLOB")
+    private String synopsis;
+    
+    @Column(length = 100)
     private String genre;
     
     @Column(columnDefinition = "DOUBLE DEFAULT 0")
     private double rating = 0.0;
-    
-    @Column(columnDefinition = "TEXT")
-    private String synopsis;
     
     private String image_url;
     

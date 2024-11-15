@@ -2,6 +2,8 @@ package com.example.backend.service;
 
 import com.example.backend.model.Book;
 import com.example.backend.repository.BookRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +12,8 @@ import java.util.List;
 public class BookService {
 
     private final BookRepository bookRepository;
-
+    private static final Logger logger = LoggerFactory.getLogger(BookService.class);
+    
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
@@ -20,8 +23,28 @@ public class BookService {
     }
 
     public Book addBook(Book book) {
-        System.out.println("BookService: Saving book: " + book.toString());
-        return bookRepository.save(book);
+        logger.info("Attempting to save book: {}", book);
+        try {
+            // Validate book data
+            if (book.getTitle() == null || book.getTitle().trim().isEmpty()) {
+                throw new IllegalArgumentException("Book title cannot be empty");
+            }
+            if (book.getAuthor() == null || book.getAuthor().trim().isEmpty()) {
+                throw new IllegalArgumentException("Book author cannot be empty");
+            }
+
+            // Set default values for optional fields
+            if (book.getStatus() == null) book.setStatus("Not Started");
+            if (book.getGenre() == null) book.setGenre("Uncategorized");
+            if (book.getSynopsis() == null) book.setSynopsis("No synopsis available");
+
+            Book savedBook = bookRepository.save(book);
+            logger.info("Successfully saved book with ID: {}", savedBook.getId());
+            return savedBook;
+        } catch (Exception e) {
+            logger.error("Failed to save book: ", e);
+            throw new RuntimeException("Failed to save book: " + e.getMessage(), e);
+        }
     }
 
     public boolean existsById(Long id) {
