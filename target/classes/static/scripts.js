@@ -30,7 +30,6 @@ async function fetchBooks() {
                 <p class="synopsis"><strong>Synopsis:</strong> <br> ${book.synopsis}</p>
 
             `;
-
             bookList.appendChild(bookItem);
         });
 
@@ -75,8 +74,12 @@ async function fetchFavoriteGenre() {
 
 async function searchBooks() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    if (!searchTerm.trim()) return; // Don't search if input is empty
     const bookList = document.getElementById('bookList');
+    if (!searchTerm.trim()) {
+        // If search input is empty, fetch all books
+        fetchBooks();
+        return;
+    }
     const books = Array.from(bookList.getElementsByClassName('book-item'));
 
     books.forEach(book => {
@@ -185,6 +188,14 @@ function initialize () {
 document.addEventListener('DOMContentLoaded', function() {
     // Main search input
     const mainSearchInput = document.getElementById('searchInput');
+    mainSearchInput.addEventListener('input', function() {
+        if (!mainSearchInput.value.trim()) {
+            fetchBooks();
+        } else {
+            searchBooks();
+        }
+    });
+
     mainSearchInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -198,6 +209,28 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Enter') {
             e.preventDefault();
             searchGoogleBooks(this.value);
+        }
+    });
+
+    // Add Collection Button Click
+    openButtonCol.addEventListener('click', async () => {
+        try {
+            // Fetch the user's favorite book ID (assuming favorite book data is available)
+            const favoriteResponse = await fetch('/api/books/favorite');
+            if (!favoriteResponse.ok) throw new Error('Failed to fetch favorite book');
+            const favoriteBook = await favoriteResponse.json();
+            const favoriteBookId = favoriteBook.id;
+
+            // Make API call to create a collection with the favorite book
+            const response = await fetch(`/api/collection/createFavorite?favoriteBookId=${favoriteBookId}`, {
+                method: 'POST'
+            });
+            if (!response.ok) throw new Error('Failed to create favorite collection');
+
+            showToast('Favorite collection created successfully!', 'success');
+        } catch (error) {
+            console.error('Error creating favorite collection:', error);
+            showToast(error.message, 'error');
         }
     });
 });
