@@ -16,6 +16,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [ ] Prepare deployment scripts and documentation
 ---
 
+## [0.2.2] - 2024-15-10
+
+### added
+- Fix search bar when a book is searched and it is cleared it reverts back to the main book tab
+
 ## [0.2.1] - 2024-14-10
 
 ### added
