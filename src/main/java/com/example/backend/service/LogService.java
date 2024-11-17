@@ -37,4 +37,8 @@ public class LogService {
         
         return Math.round((double) totalPages / logCount * 100.0) / 100.0;
     }
+
+    public Integer getTotalPagesPast30Days() {
+        return logRepository.getTotalPagesPast30Days();
+    }
 }

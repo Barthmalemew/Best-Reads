@@ -37,4 +37,10 @@ public class LogController {
         Double averagePages = logService.getAveragePages();
         return ResponseEntity.ok(averagePages);
     }
+
+    @GetMapping("/monthlyPages")
+    public ResponseEntity<Integer> getTotalPagesPast30Days() {
+        Integer pastMonthsPages = logService.getTotalPagesPast30Days();
+        return ResponseEntity.ok(pastMonthsPages != null ? pastMonthsPages : 0);
+    }
 }

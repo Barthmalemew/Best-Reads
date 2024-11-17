@@ -13,4 +13,7 @@ public interface LogRepository extends JpaRepository<Log, Long> {
 
     @Query("SELECT COUNT(l) FROM Log l")
     Long getLogCount();
+
+    @Query("SELECT SUM(pagesRead) from Log where dateRead >= CURRENT_DATE - 30")
+    Integer getTotalPagesPast30Days();
 }

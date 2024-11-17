@@ -72,6 +72,17 @@ async function fetchFavoriteGenre() {
     }
 }
 
+async function fetchPastMonthPages() {
+    try {
+        const response = await fetch('/api/log/monthlyPages');
+        const data = await response.json();
+        document.getElementById('monthlyPages').innerText = `Pages Read Last Month: ${data}`;
+    } catch (error) {
+        console.error('Error fetching total pages:', error);
+        document.getElementById('monthlyPages').innerText = `Error fetching total pages. Please try again later.`;
+    }
+}
+
 async function searchBooks() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     const bookList = document.getElementById('bookList');
@@ -182,6 +193,7 @@ function initialize () {
     fetchTotalPages();
     fetchFavoriteGenre();
     fetchAveragePages();
+    fetchPastMonthPages();
 }
 
 // Add event listeners for Enter key on search inputs

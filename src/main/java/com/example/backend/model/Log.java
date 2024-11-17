@@ -14,9 +14,6 @@ public class Log {
     @Column(name = "date_Read", nullable = false)
     private LocalDate dateRead;
 
-    @Column(name = "minutes_Read")
-    private int minutesRead;
-
     @Column(name = "pages_Read", nullable = false)
     private int pagesRead;
 
@@ -30,14 +27,6 @@ public class Log {
 
     public void setDateRead(LocalDate dateRead) {
         this.dateRead = dateRead;
-    }
-
-    public int getMinutesRead() {
-        return minutesRead;
-    }
-
-    public void setMinutesRead(int minutesRead) {
-        this.minutesRead = minutesRead;
     }
 
     public int getPagesRead() {
