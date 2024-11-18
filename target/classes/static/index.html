@@ -20,7 +20,7 @@
     <p onclick="openLogPagesDialog()"><i class="fas fa-book-reader"></i> Log Pages</p>
     <p onclick="openAddCollectionDialog()"><i class="fas fa-folder-plus"></i> Add Collection</p>
     <h3>Collections</h3>
-    <div>
+    <div id="collectionList">
         Collection 1
     </div>
 </div>
@@ -97,6 +97,9 @@
             </fieldset>
             <label for="edit-synopsis"> Synopsis: </label>
             <input type="text" id="edit-synopsis" name="synopsis" required/>
+            <label for="collection">Collection: </label>
+            <select name="collection" id="col-drop">
+            </select>
             <label for="edit-image"> Image: </label>
             <input type="url" id="edit-image" placeholder="https://example.com" name="image" />
             <div>
