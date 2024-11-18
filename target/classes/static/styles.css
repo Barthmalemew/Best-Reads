@@ -63,8 +63,15 @@ html, body {
     border-bottom: 2px solid #FFE100;
 }
 
-.sidebar p {
+.sidebar > p {
     margin-top: 20px;
+    cursor: pointer;
+}
+
+.col-item {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
     cursor: pointer;
 }
 

@@ -62,8 +62,8 @@ async function fetchCollections(){
             collectionOpt1.innerHTML = `${collection.name}`;
       
 
-            collectionItem.style.display = "flex";
-            collectionItem.innerHTML = `<p onclick=searchCollection(${collection.id})>${collection.name}<p/>`;
+            collectionItem.classList.add('col-item');
+            collectionItem.innerHTML = `<i onclick=deleteCollection(${collection.id}) class="fa-solid fa-x"></i><p onclick=searchCollection(${collection.id})>${collection.name}<p/>`;
             collectionItem.dataset.collectionId = collection.id;
 
             collectionList.appendChild(collectionItem);
@@ -396,6 +396,29 @@ async function deleteBook(id) {
     } catch (error) {
         showToast(error.message, 'error');
     }
+}
+
+async function deleteCollection(collectionId) {
+
+    if (!confirm('Are you sure you want to delete this collection?')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/collection/${collectionId}`, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) throw new Error('Failed to delete collection');
+
+        await fetchCollections();
+
+        showToast('Book deleted successfully!');
+    } catch (error) {
+        showToast(error.message, 'error');
+    }
+
+    
 }
 
 function showToast(message, type = 'success') {

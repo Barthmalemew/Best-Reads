@@ -25,4 +25,13 @@ public class CollectionService {
         return collectionRepository.save(collection);
     }
 
+    public boolean deleteCollection(Long id) {
+        if (collectionRepository.existsById(id)) {
+            collectionRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+
 }
