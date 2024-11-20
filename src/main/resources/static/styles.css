@@ -78,7 +78,7 @@ html, body {
 /* -------Main content area------- */
 .content {
     padding: 30px;
-    overflow-y: auto;
+    overflow-x: hidden;
     flex-grow: 1;
     background-image: radial-gradient(white ,90%,rgb(243, 243, 202));
 }

@@ -39,7 +39,6 @@ html, body {
     width: 35px;
     height: 35px;
     cursor: pointer;
-    justify-content: center;
 }
 
 /* -------Sidebar styling------- */
@@ -79,7 +78,7 @@ html, body {
 /* -------Main content area------- */
 .content {
     padding: 30px;
-    overflow-y: auto;
+    overflow-x: hidden;
     flex-grow: 1;
     background-image: radial-gradient(white ,90%,rgb(243, 243, 202));
 }
