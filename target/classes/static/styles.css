@@ -39,6 +39,7 @@ html, body {
     width: 35px;
     height: 35px;
     cursor: pointer;
+    justify-content: center;
 }
 
 /* -------Sidebar styling------- */

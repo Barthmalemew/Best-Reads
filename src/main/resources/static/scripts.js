@@ -392,7 +392,7 @@ async function deleteBook(id) {
 
         await fetchBooks();
         await fetchFavoriteGenre();
-        showToast('Book deleted successfully!');
+        showToast('Collection deleted successfully!');
     } catch (error) {
         showToast(error.message, 'error');
     }
@@ -418,6 +418,14 @@ async function deleteCollection(collectionId) {
         showToast(error.message, 'error');
     }
 
+    
+}
+async function clearSearch(){
+
+    searchBar = document.getElementById("searchInput");
+
+    searchBar.value = "";
+    searchBooks();
     
 }
 
