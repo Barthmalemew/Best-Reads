@@ -63,7 +63,7 @@ async function fetchCollections(){
       
 
             collectionItem.classList.add('col-item');
-            collectionItem.innerHTML = `<i onclick=deleteCollection(${collection.id}) class="fa-solid fa-x"></i><p onclick=searchCollection(${collection.id})>${collection.name}<p/>`;
+            collectionItem.innerHTML = `<i onclick=deleteCollection(${collection.id}) class="fa-solid fa-x"></i><p onclick="searchCollection('${collection.id} ${collection.name}')">${collection.name}<p/>`;
             collectionItem.dataset.collectionId = collection.id + " " + collection.name;
 
             collectionList.appendChild(collectionItem);
