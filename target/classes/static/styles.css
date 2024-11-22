@@ -215,6 +215,7 @@ hr {
     background-color: transparent;
     border: none;
     padding: 50px;
+    width:400px;
 }
 
 .dialog form{
@@ -342,5 +343,9 @@ hr {
     .book-item .synopsis{
         width: auto;
         padding: 30px;
+    }
+
+    .dialog {
+        width:50%;
     }
 }

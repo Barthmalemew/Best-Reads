@@ -83,17 +83,70 @@
             <label for="edit-author"> Author: </label>
             <input type="text" id="edit-author" name="author" required/>
             <label for="edit-genre"> Genre: </label>
-            <input type="text" id="edit-genre" name="genre" required/>
+            <select id="edit-genre" name="genre">
+                <option value="Fiction">Fiction</option>
+                <option value="Literary Fiction">Literary Fiction</option>
+                <option value="Historical Fiction">Historical Fiction</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Mystery/Thriller">Mystery/Thriller</option>
+                <option value="Romance">Romance</option>
+                <option value="Horror">Horror</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Dystopian">Dystopian</option>
+                <option value="Young Adult">Young Adult</option>
+                <option value="Young Adult Fiction">Young Adult Fiction</option>
+
+              
+                <option value="Non-fiction">Non-fiction</option>
+                <option value="Biography/Autobiography">Biography/Autobiography</option>
+                <option value="Memoir">Memoir</option>
+                <option value="Self-Help">Self-Help</option>
+                <option value="True Crime">True Crime</option>
+                <option value="Travel">Travel</option>
+                <option value="Cookbooks">Cookbooks</option>
+                <option value="Health & Wellness">Health & Wellness</option>
+                <option value="Politics">Politics</option>
+                <option value="Business/Finance">Business/Finance</option>
+                <option value="Philosophy">Philosophy</option>
+                <option value="Economics">Economics</option>
+
+              
+                <option value="Poetry">Poetry</option>
+              
+                <option value="Graphic Novels/Comics">Graphic Novels/Comics</option>
+              
+                <option value="Children's Books">Children's Books</option>
+                <option value="Picture Books">Picture Books</option>
+                <option value="Early Readers">Early Readers</option>
+                <option value="Middle Grade">Middle Grade</option>
+              
+                <option value="Classics">Classics</option>
+              
+                <option value="Humor">Humor</option>
+              
+                <option value="Historical Romance">Historical Romance</option>
+              
+                <option value="Thriller/Suspense">Thriller/Suspense</option>
+              
+                <option value="Crime/Detective Fiction">Crime/Detective Fiction</option>
+            </select>
             <label for="edit-rating"> Rating: </label>
             <input type="number" id="edit-rating" name="rating" max="5" min="0" step="0.1"/>
-            <fieldset>
+            <fieldset style="display: flex; flex-direction: column; ">
                 <legend>Status</legend>
-                <label for="edit-status"> Not Started: </label>
-                <input type="radio" id="edit-status-not-started" name="status" value="Not Started" />
-                <label for="edit-status"> In Progress: </label>
-                <input type="radio" id="edit-status-in-progress" name="status" value="In Progress"/>
-                <label for="edit-status"> Complete: </label>
-                <input type="radio" id="edit-status-completed" name="status" value="Completed" />
+                <div>
+                    <label for="edit-status"> Not Started: </label>
+                    <input type="radio" id="edit-status-not-started" name="status" value="Not Started" />
+                </div>
+                <div>
+                    <label for="edit-status"> In Progress: </label>
+                    <input type="radio" id="edit-status-in-progress" name="status" value="In Progress"/>
+                </div>
+                <div>
+                    <label for="edit-status"> Complete: </label>
+                    <input type="radio" id="edit-status-completed" name="status" value="Completed" />
+                </div>
             </fieldset>
             <label for="edit-synopsis"> Synopsis: </label>
             <input type="text" id="edit-synopsis" name="synopsis" required/>

@@ -13,7 +13,7 @@ async function fetchBooks() {
             bookItem.dataset.bookId = book.id; // Add data attribute for book ID
             if (book.collection)
             {
-                 bookItem.dataset.collectionId = book.collection.id;
+                 bookItem.dataset.collectionId = book.collection.id + " " + book.collection.name;
             }
             
             bookItem.innerHTML = `
@@ -51,20 +51,20 @@ async function fetchCollections(){
 
 
         collectionList.innerHTML = '';
-        collectionDrop1.innerHTML = "<option value = '0'> </option>";
+        collectionDrop1.innerHTML = "<option value='0 none'></option>";
 
         collections.forEach(collection => {
             const collectionItem = document.createElement('div');
             const collectionOpt1 = document.createElement('option');
 
 
-            collectionOpt1.value = collection.id;
+            collectionOpt1.value = `${collection.id} ${collection.name}`;
             collectionOpt1.innerHTML = `${collection.name}`;
       
 
             collectionItem.classList.add('col-item');
             collectionItem.innerHTML = `<i onclick=deleteCollection(${collection.id}) class="fa-solid fa-x"></i><p onclick=searchCollection(${collection.id})>${collection.name}<p/>`;
-            collectionItem.dataset.collectionId = collection.id;
+            collectionItem.dataset.collectionId = collection.id + " " + collection.name;
 
             collectionList.appendChild(collectionItem);
             collectionDrop1.appendChild(collectionOpt1);
@@ -282,27 +282,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Add Collection Button Click
-    openButtonCol.addEventListener('click', async () => {
-        try {
-            // Fetch the user's favorite book ID (assuming favorite book data is available)
-            const favoriteResponse = await fetch('/api/books/favorite');
-            if (!favoriteResponse.ok) throw new Error('Failed to fetch favorite book');
-            const favoriteBook = await favoriteResponse.json();
-            const favoriteBookId = favoriteBook.id;
-
-            // Make API call to create a collection with the favorite book
-            const response = await fetch(`/api/collection/createFavorite?favoriteBookId=${favoriteBookId}`, {
-                method: 'POST'
-            });
-            if (!response.ok) throw new Error('Failed to create favorite collection');
-
-            showToast('Favorite collection created successfully!', 'success');
-        } catch (error) {
-            console.error('Error creating favorite collection:', error);
-            showToast(error.message, 'error');
-        }
-    });
 });
 
 async function submitBook(formData) {
@@ -454,7 +433,7 @@ function openEditBookDialog(button) {
     const status = bookItem.querySelector('.details p:nth-of-type(4)').innerText.replace('Status: ', '');
     const synopsis = bookItem.querySelector('.synopsis').innerText.replace('Synopsis:', '');
     const imgScr = bookItem.querySelector('.img-edit-btn img').src; 
-    const collectionID = bookItem.dataset.collectionId;
+    const collectionID = bookItem.dataset.collectionId ? bookItem.dataset.collectionId : "0 none";
     const currentBookId = bookItem.dataset.bookId;
     document.getElementById('edit-book-form').dataset.bookId = currentBookId;
 
