@@ -15,6 +15,48 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [ ] Write unit and integration tests
 - [ ] Prepare deployment scripts and documentation
 ---
+## [0.2.9] - 2024-25-11
+
+### added
+- Added hover text on buttons
+- fixed a syntax error
+
+
+## [0.2.8] - 2024-24-11
+
+### added
+- Made the Book logo and Best Read title clickable
+
+## [0.2.7] - 2024-24-11
+
+### added
+- added an icon and logo
+
+## [0.2.6] - 2024-22-11
+
+### added
+- Fixed Collection search because I broke it
+- modified edit book genre to be a drop down(with way to many options)
+- Changed status to be columns
+- Fixed so that edit actually saves
+
+## [0.2.5] - 2024-20-11
+
+### added
+- Added a Clear Search feature
+- Fixed the content scrolling on the x-axis
+
+## [0.2.4] - 2024-18-11
+
+### added
+- Added Delete collection feature
+- Added Collection Javascript back
+
+
+## [0.2.3] - 2024-17-11
+
+### added
+- altered the db and longest pages to monthly pages
 
 ## [0.2.2] - 2024-15-10
 
