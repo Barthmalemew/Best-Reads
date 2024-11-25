@@ -13,12 +13,13 @@
 <body>
 
 
-
 <!-- Sidebar -->
 <div class="sidebar">
-    <div class="header">
-        <img class="header-image" src="/open-book.png">
-        <h1>Best Reads</h1>
+    <div class="header" style="display: flex; align-items: center; gap: 10px;">
+        <a href="index.html" class="logo-container" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+            <img class="header-image" src="/open-book.png" alt="Best Reads Logo">
+            <h1 style="margin: 0;">Best Reads</h1>
+        </a>
     </div>
     <p onclick="openAddBookDialog()"><i class="fas fa-plus"></i> Add Book</p>
     <p onclick="openLogPagesDialog()"><i class="fas fa-book-reader"></i> Log Pages</p>
@@ -101,7 +102,7 @@
                 <option value="Young Adult">Young Adult</option>
                 <option value="Young Adult Fiction">Young Adult Fiction</option>
 
-              
+                
                 <option value="Non-fiction">Non-fiction</option>
                 <option value="Biography/Autobiography">Biography/Autobiography</option>
                 <option value="Memoir">Memoir</option>
@@ -115,24 +116,24 @@
                 <option value="Philosophy">Philosophy</option>
                 <option value="Economics">Economics</option>
 
-              
+                
                 <option value="Poetry">Poetry</option>
-              
+                
                 <option value="Graphic Novels/Comics">Graphic Novels/Comics</option>
-              
+                
                 <option value="Children's Books">Children's Books</option>
                 <option value="Picture Books">Picture Books</option>
                 <option value="Early Readers">Early Readers</option>
                 <option value="Middle Grade">Middle Grade</option>
-              
+                
                 <option value="Classics">Classics</option>
-              
+                
                 <option value="Humor">Humor</option>
-              
+                
                 <option value="Historical Romance">Historical Romance</option>
-              
+                
                 <option value="Thriller/Suspense">Thriller/Suspense</option>
-              
+                
                 <option value="Crime/Detective Fiction">Crime/Detective Fiction</option>
             </select>
             <label for="edit-rating"> Rating: </label>
