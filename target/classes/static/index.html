@@ -21,15 +21,14 @@
             <h1 style="margin: 0;">Best Reads</h1>
         </a>
     </div>
-    <p onclick="openAddBookDialog()"><i class="fas fa-plus"></i> Add Book</p>
-    <p onclick="openLogPagesDialog()"><i class="fas fa-book-reader"></i> Log Pages</p>
-    <p onclick="openAddCollectionDialog()"><i class="fas fa-folder-plus"></i> Add Collection</p>
+    <p onclick="openAddBookDialog()"><i title="Add a new book" class="fas fa-plus"></i> Add Book</p>
+    <p onclick="openLogPagesDialog()"><i title="Log pages" class="fas fa-book-reader"></i> Log Pages</p>
+    <p onclick="openAddCollectionDialog()"><i title="Add a custom collection" class="fas fa-folder-plus"></i> Add Collection</p>
     <h3>Collections</h3>
     <div id="collectionList">
         Collection 1
     </div>
 </div>
-
 
 <!----- Add Collection Dialog ----->
 <dialog id="add-col" class="dialog">
@@ -101,8 +100,6 @@
                 <option value="Dystopian">Dystopian</option>
                 <option value="Young Adult">Young Adult</option>
                 <option value="Young Adult Fiction">Young Adult Fiction</option>
-
-                
                 <option value="Non-fiction">Non-fiction</option>
                 <option value="Biography/Autobiography">Biography/Autobiography</option>
                 <option value="Memoir">Memoir</option>
@@ -114,26 +111,17 @@
                 <option value="Politics">Politics</option>
                 <option value="Business/Finance">Business/Finance</option>
                 <option value="Philosophy">Philosophy</option>
-                <option value="Economics">Economics</option>
-
-                
-                <option value="Poetry">Poetry</option>
-                
+                <option value="Economics">Economics</option>              
+                <option value="Poetry">Poetry</option>              
                 <option value="Graphic Novels/Comics">Graphic Novels/Comics</option>
-                
                 <option value="Children's Books">Children's Books</option>
                 <option value="Picture Books">Picture Books</option>
                 <option value="Early Readers">Early Readers</option>
-                <option value="Middle Grade">Middle Grade</option>
-                
-                <option value="Classics">Classics</option>
-                
-                <option value="Humor">Humor</option>
-                
-                <option value="Historical Romance">Historical Romance</option>
-                
-                <option value="Thriller/Suspense">Thriller/Suspense</option>
-                
+                <option value="Middle Grade">Middle Grade</option>              
+                <option value="Classics">Classics</option>              
+                <option value="Humor">Humor</option>              
+                <option value="Historical Romance">Historical Romance</option>              
+                <option value="Thriller/Suspense">Thriller/Suspense</option>              
                 <option value="Crime/Detective Fiction">Crime/Detective Fiction</option>
             </select>
             <label for="edit-rating"> Rating: </label>
@@ -181,8 +169,8 @@
     <!-- Search Container -->
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Search books...">
-        <button onclick="searchBooks()"><i class="fas fa-search"></i></button>
-        <button onclick="clearSearch()"><i class="fa-regular fa-circle-xmark"></i></button>
+        <button onclick="searchBooks()"><i class="fas fa-search" title="Search"></i></button>
+        <button onclick="clearSearch()"><i class="fa-regular fa-circle-xmark" title="Clear"></i></button>
     </div>
 
     <hr>

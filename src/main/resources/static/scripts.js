@@ -19,8 +19,8 @@ async function fetchBooks() {
             bookItem.innerHTML = `
                 <div class="img-edit-btn">
                     <img src="${book.image_url ? book.image_url : 'https://covers.openlibrary.org/b/id/8236211-L.jpg'}" alt="Book cover">
-                    <button class="btn" onclick="openEditBookDialog(this)">Edit</button>
-                    <button class="btn delete-btn" onclick="deleteBook(${book.id})">Delete</button>
+                    <button class="btn" onclick="openEditBookDialog(this)" title="Edit ${book.title}" >Edit</button>
+                    <button class="btn delete-btn" onclick="deleteBook(${book.id}) title="Delete ${book.title}" >Delete</button>
                 </div>
 
                 <div class="details">
@@ -63,7 +63,7 @@ async function fetchCollections(){
       
 
             collectionItem.classList.add('col-item');
-            collectionItem.innerHTML = `<i onclick=deleteCollection(${collection.id}) class="fa-solid fa-x"></i><p onclick="searchCollection('${collection.id} ${collection.name}')">${collection.name}<p/>`;
+            collectionItem.innerHTML = `<i onclick=deleteCollection(${collection.id}) title="Delete Collection" class="fa-solid fa-x"></i><p onclick="searchCollection('${collection.id} ${collection.name}')">${collection.name}<p/>`;
             collectionItem.dataset.collectionId = collection.id + " " + collection.name;
 
             collectionList.appendChild(collectionItem);
