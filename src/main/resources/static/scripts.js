@@ -20,7 +20,7 @@ async function fetchBooks() {
                 <div class="img-edit-btn">
                     <img src="${book.image_url ? book.image_url : 'https://covers.openlibrary.org/b/id/8236211-L.jpg'}" alt="Book cover">
                     <button class="btn" onclick="openEditBookDialog(this)" title="Edit ${book.title}" >Edit</button>
-                    <button class="btn delete-btn" onclick="deleteBook(${book.id}) title="Delete ${book.title}" >Delete</button>
+                    <button class="btn delete-btn" onclick="deleteBook(${book.id})" title="Delete ${book.title}" >Delete</button>
                 </div>
 
                 <div class="details">
