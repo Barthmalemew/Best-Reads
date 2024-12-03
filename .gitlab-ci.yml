@@ -4,4 +4,4 @@ stages:
 build-job:
   stage: deploy
   script:
-    -./mvnw spring-boot:run
+    - ./mvnw spring-boot:run
